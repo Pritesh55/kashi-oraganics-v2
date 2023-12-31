@@ -1,0 +1,112 @@
+https://supabase.com/dashboard/
+open Project :: Blue bird
+----------------
+
+Name :: kashi organics
+Database Password :: Kashi@221001
+
+Referance_id (Project id) :: okfvfltvjlpvzhiqhgyp
+
+------------------
+
+Go to ::
+---------
+dashboard => authentication => URL configuration => Site URL
+-----------------------------
+Project URL :: 
+REDIRECT_URL= https://kashi-oraganics-v1.vercel.app/
+# In (.env) file
+-----------------------------------------------------------------
+
+dashboard => authentication => URL configuration => Redirect URLs
+-----------------------------
+REDIRECT_URL= http://localhost:3000/**
+# In (.env.local) file
+-----------------------------------------------------------------
+
+
+dashboard => Project Settings (Left Sidebar's Last menu) => General
+Referance id ::
+----------------------------------------
+Project Id :: okfvfltvjlpvzhiqhgyp
+----------------------------------------
+
+
+dashboard => Project Settings (Left Sidebar's Last menu) => => API 
+
+=> Project URL :: 
+-----------------------------------------------------------------
+NEXT_PUBLIC_SUPABASE_URL=https://okfvfltvjlpvzhiqhgyp.supabase.co
+-----------------------------------------------------------------
+
+=> Project API Keys ::
+-----------------------------------------------------------------
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rZnZmbHR2amxwdnpoaXFoZ3lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM2NzUyMDAsImV4cCI6MjAxOTI1MTIwMH0.m5WX1WBTo6a46hSQHHn_RXCCBb1ubslKHV3tEfAYZQw
+-----------------------------------------------------------------
+
+
+dashboard => authentication =>  Providers
+https://supabase.com/dashboard/project/okfvfltvjlpvzhiqhgyp/auth/providers
+Confirm email :: Off 
+
+
+Table Name :: tweets ::
+Column name :: "title"
+Row Name :: "First Tweet"
+Row Name :: "Second Tweet"
+Row Name :: "Third Tweet"
+
+----------------------------
+# Video 03 ::
+-------------
+
+dashboard :: 
+-------------
+Left bar :: 5th Icon :: Click on "authentication"
+Then 2nd left bar :: configuration => click on "Policies"...
+Then click on "New Policy"...
+
+Then , Click on for "Full customization" ::
+
+Adding new policy to public.tweets ::
+---------------------------------------
+
+
+Policy Code of SQL ::: just for info
+-----------------------
+create policy "anyone can select tweets" ON "public"."tweets"
+as permissive for select
+to public
+using (true);
+----------------------
+
+
+Policy name :: "anyone can select tweets"
+Allowed operation :: Click on "SELECT"
+USING expression :: True 
+
+So, the ".SELECT()" action will be "allowed" for "EveryOne"...
+.select() => get the data...
+
+--------------------------------------------
+
+
+# Video 07 :: only authenticated users can select tweets ::
+-------------
+dashboard :: 
+-------------
+Left bar :: 5th Icon :: Click on "authentication"
+Then 2nd left bar :: configuration => click on "Policies"...
+
+If one policy of "SELECT" Exist,
+then "Right bottom" of that policy has ":" icon..
+Click on colun ":" icon,
+then click on "Edit" optin in popup menu...
+
+
+Policy name :: only authenticated users can select tweets
+Target roles :: authenticated 
+USING expression ::  true
+
+
+---------------------------------------------------
