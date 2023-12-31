@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 // -----------------------------------------------------
 
-const page = () => {
+const Login = () => {
     console.log('login started');
     const router = useRouter();
 
@@ -950,4 +950,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Login
