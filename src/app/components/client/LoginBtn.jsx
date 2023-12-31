@@ -97,9 +97,6 @@ const LoginBtn = () => {
 
     if (sessionIsLoading) return <div>loading...</div>
 
-
-
-
     return (
         <>
 
@@ -124,10 +121,6 @@ const LoginBtn = () => {
                     {(user_id == null) ? `log in` : `log out`}
                 </button>
             </div>
-
-
-
-
         </>
     )
 }
