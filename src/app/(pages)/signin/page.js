@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
 // step 11.18 :: import Link component
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import LoginBtn from '@/app/components/client/LoginBtn'
 // -----------------------------------------------------
 
 const Login = () => {
@@ -564,6 +565,7 @@ const Login = () => {
         return (
             <>
 
+
                 {/* step 11.17 :: Ui screen after "Sign up" or after "sign in" :: */}
                 <section className="text-gray-600 body-font bg-white min-h-screen">
                     <div className="2xl:container mx-auto w-full flex gap-8 justify-between flex-wrap p-5 items-center">
@@ -835,6 +837,9 @@ const Login = () => {
     // step 11.14.02 :: if "session.user" :: Object exist ::
     return (
         <>
+            <div className="text-black bg-white fixed top-3 md:top-3 right-5  z-[9999]">
+                <LoginBtn isBgDark={false}></LoginBtn>
+            </div>
 
             {/* step 11.16 :: Ui screen for Sign up Screen :: */}
             <section className="text-gray-600 body-font bg-white">
