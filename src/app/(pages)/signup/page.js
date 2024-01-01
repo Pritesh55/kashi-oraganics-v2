@@ -249,14 +249,14 @@ const SignUp = () => {
         if (signOutError == null) {
             // then, User is Suceesfully Log-out...
 
-            router.replace('/');
+            // router.replace('/');
 
             // So, Ui will display 1st default Logged-out screen..
 
             // step 12.5 :: toggle :: userChange :: (Optional)
             // to reRun useeffect :: to ReCheck user "session"...
             //----------------------------------------------------- 
-            // setUserChange(!userChange);
+            setUserChange(!userChange);
 
 
             // step 12.03 :: rest email and passward
@@ -567,9 +567,7 @@ const SignUp = () => {
         return (
             <>
 
-                <div className="text-black bg-white fixed top-3 md:top-3 right-5  z-[9999]">
-                    <LoginBtn isBgDark={false}></LoginBtn>
-                </div>
+
 
                 {/* step 11.17 :: Ui screen after "Sign up" or after "sign in" :: */}
                 <section className="text-gray-600 body-font bg-white min-h-screen">
@@ -842,6 +840,10 @@ const SignUp = () => {
     // step 11.14.02 :: if "session.user" :: Object exist ::
     return (
         <>
+
+            <div className="text-black bg-white fixed top-3 md:top-3 right-5  z-[9999]">
+                <LoginBtn isBgDark={false}></LoginBtn>
+            </div>
 
             {/* step 11.16 :: Ui screen for Sign up Screen :: */}
             <section className="text-gray-600 body-font bg-white">
