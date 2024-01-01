@@ -86,9 +86,9 @@ const LoginBtn = ({ isBgDark = true }) => {
         // ------------------------------------------------------
     }
 
-    const handleSession = (up_or_in) => {
+    const handleSession = () => {
         if (user_id == null) {
-            router.push(`sign?${up_or_in}`)
+            router.replace(`signin`)
         } else {
             handleSignOut();
         }
@@ -103,17 +103,15 @@ const LoginBtn = ({ isBgDark = true }) => {
             <div className="flex gap-6 flex-wrap ">
                 {(user_id == null) ?
                     <>
-                        <button onClick={() => {
-                            handleSession(`up`);
-                        }}
+                        <Link href={`/signup`}
                             className={` ${(isBgDark) ? `bg-black text-white` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                             Sign up
-                        </button>
+                        </Link>
 
                     </>
                     :
                     <>
-                        <Link href={`/sign?in`}
+                        <Link href={`/profile`}
                             className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black hover:border-[#ffd700]`}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                             Profile
                         </Link>
@@ -122,7 +120,7 @@ const LoginBtn = ({ isBgDark = true }) => {
 
 
                 <button onClick={() => {
-                    handleSession('in');
+                    handleSession();
                 }}
                     className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black hover:border-[#ffd700]`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                     {(user_id == null) ? `log in` : `log out`}
