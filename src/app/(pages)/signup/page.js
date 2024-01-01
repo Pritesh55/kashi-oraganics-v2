@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
 // step 11.18 :: import Link component
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import LoginBtn from '@/app/components/client/LoginBtn'
 // -----------------------------------------------------
 
 const SignUp = () => {
@@ -565,6 +566,10 @@ const SignUp = () => {
 
         return (
             <>
+
+                <div className="text-black bg-white fixed top-3 md:top-3 right-5  z-[9999]">
+                    <LoginBtn isBgDark={false}></LoginBtn>
+                </div>
 
                 {/* step 11.17 :: Ui screen after "Sign up" or after "sign in" :: */}
                 <section className="text-gray-600 body-font bg-white min-h-screen">
