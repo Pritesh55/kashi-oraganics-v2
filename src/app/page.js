@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
-      <div className="text-white bg-black fixed top-3 md:top-5 right-5  z-[9999]">
+      <div className="text-white bg-black fixed top-3 md:top-3 right-5  z-[9999]">
         <LoginBtn isBgDark={true}></LoginBtn>
       </div>
 
