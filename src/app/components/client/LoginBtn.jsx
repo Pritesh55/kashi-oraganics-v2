@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr';
 
-const LoginBtn = () => {
+const LoginBtn = ({ isBgDark = true }) => {
     const router = useRouter();
 
     const [user_id, setUser_id] = useState();
@@ -86,9 +86,9 @@ const LoginBtn = () => {
         // ------------------------------------------------------
     }
 
-    const handleSession = () => {
+    const handleSession = (up_or_in) => {
         if (user_id == null) {
-            router.replace(`/login`);
+            router.push(`sign?${up_or_in}`)
         } else {
             handleSignOut();
         }
@@ -101,23 +101,30 @@ const LoginBtn = () => {
         <>
 
             <div className="flex gap-6 flex-wrap ">
-                {(user_id == null) &&
+                {(user_id == null) ?
                     <>
                         <button onClick={() => {
-                            handleSession();
+                            handleSession(`up`);
                         }}
-                            className="btn-tp bg-transparent text-white border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-normal tracking-wider">
+                            className={` ${(isBgDark) ? `bg-black text-white` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                             Sign up
                         </button>
 
+                    </>
+                    :
+                    <>
+                        <Link href={`/sign?in`}
+                            className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black hover:border-[#ffd700]`}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
+                            Profile
+                        </Link>
                     </>
                 }
 
 
                 <button onClick={() => {
-                    handleSession();
+                    handleSession('in');
                 }}
-                    className="btn-tp bg-transparent text-white border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-normal tracking-wider">
+                    className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black hover:border-[#ffd700]`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                     {(user_id == null) ? `log in` : `log out`}
                 </button>
             </div>
