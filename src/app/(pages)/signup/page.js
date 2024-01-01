@@ -861,7 +861,7 @@ const SignUp = () => {
                     <div className="md:w-1/2 bg-white rounded-lg p-8 flex flex-col w-full gap-8 max-w-md min-h-[384px] border-2 border-solid border-orange-400">
 
                         <h2 className="text-gray-900 xl:text-3xl text-2xl font-medium title-font">
-                            Sign in
+                            Sign up
                         </h2>
 
                         <div className="flex flex-col gap-6">
