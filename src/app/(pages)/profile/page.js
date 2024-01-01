@@ -248,19 +248,17 @@ const Profile = () => {
         if (signOutError == null) {
             // then, User is Suceesfully Log-out...
 
-            router.replace('/');
-
             // So, Ui will display 1st default Logged-out screen..
 
             // step 12.5 :: toggle :: userChange :: (Optional)
             // to reRun useeffect :: to ReCheck user "session"...
             //----------------------------------------------------- 
-            // setUserChange(!userChange);
+            setUserChange(!userChange);
 
 
             // step 12.03 :: rest email and passward
-            // setEmail('');
-            // setPassword('');
+            setEmail('');
+            setPassword('');
 
             // step 12.04 :: So, reset "user" to 'null...
             setSession(null);
