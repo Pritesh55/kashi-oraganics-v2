@@ -21,6 +21,10 @@ const Login = () => {
     console.log('login started');
     const router = useRouter();
 
+    // -----------------------------------------------------
+    // Step 11.02 :: Innitiate :: createClientComponentClient
+    const supabase = createClientComponentClient();
+
     const pathname = window.location.href;
     var queryNameArray = pathname.split("?");
     var queryName = queryNameArray[1];
@@ -63,6 +67,8 @@ const Login = () => {
     const [whatsapp_number, setWhatsapp_number] = useState('');
     const [mobile_number, setMobile_number] = useState('');
     const [address, setAddress] = useState('');
+
+
 
 
     // -------------------------------------------------
@@ -224,9 +230,7 @@ const Login = () => {
     }, [userChange])
     // -----------------------------------------
 
-    // -----------------------------------------------------
-    // Step 11.02 :: Innitiate :: createClientComponentClient
-    const supabase = createClientComponentClient();
+
 
 
 
