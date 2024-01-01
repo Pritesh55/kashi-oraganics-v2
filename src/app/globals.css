@@ -18,10 +18,23 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+
+.label-s1 {
+  @apply text-base 2xl:text-lg font-normal leading-relaxed tracking-wide capitalize text-black;
+}
+
+pre {
+  white-space: pre-wrap;
+  overflow: auto;
+
+}
+
+
+.btn-tp:hover {
+  box-shadow: rgb(255, 251, 228) 0px 30px 60px -12px inset, rgb(255, 242, 217) 0px 18px 36px -18px inset;
 }

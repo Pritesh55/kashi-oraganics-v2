@@ -1,4 +1,3 @@
-
 'use client'
 // -----------------------------------------------------
 // step 11 :: Total 26 Stpes :: Session, SignOut, SignIn
@@ -21,6 +20,11 @@ import { useRouter } from 'next/navigation'
 const Login = () => {
     console.log('login started');
     const router = useRouter();
+
+    // -----------------------------------------------------
+    // Step 11.02 :: Innitiate :: createClientComponentClient
+    const supabase = createClientComponentClient();
+
 
     // after Sign in ::
     // -----------------------------------------------------
@@ -60,6 +64,8 @@ const Login = () => {
     const [whatsapp_number, setWhatsapp_number] = useState('');
     const [mobile_number, setMobile_number] = useState('');
     const [address, setAddress] = useState('');
+
+
 
 
     // -------------------------------------------------
@@ -221,9 +227,7 @@ const Login = () => {
     }, [userChange])
     // -----------------------------------------
 
-    // -----------------------------------------------------
-    // Step 11.02 :: Innitiate :: createClientComponentClient
-    const supabase = createClientComponentClient();
+
 
 
 
@@ -244,35 +248,33 @@ const Login = () => {
         if (signOutError == null) {
             // then, User is Suceesfully Log-out...
 
-            router.replace('/');
-
             // So, Ui will display 1st default Logged-out screen..
 
             // step 12.5 :: toggle :: userChange :: (Optional)
             // to reRun useeffect :: to ReCheck user "session"...
             //----------------------------------------------------- 
-            // setUserChange(!userChange);
+            setUserChange(!userChange);
 
 
             // step 12.03 :: rest email and passward
-            // setEmail('');
-            // setPassword('');
+            setEmail('');
+            setPassword('');
 
             // step 12.04 :: So, reset "user" to 'null...
-            // setSession(null);
-            // setUser(null);
+            setSession(null);
+            setUser(null);
 
-            // setUser_id('');
-            // setEmail_id('');
+            setUser_id('');
+            setEmail_id('');
 
             // So, Another User after sign in can not see this data...
-            // setUserProfile({});
-            // setFirst_name('');
-            // setLast_name('');
-            // setEmail_id_Profile_Update('');
-            // setMobile_number('');
-            // setWhatsapp_number('');
-            // setAddress('');
+            setUserProfile({});
+            setFirst_name('');
+            setLast_name('');
+            setEmail_id_Profile_Update('');
+            setMobile_number('');
+            setWhatsapp_number('');
+            setAddress('');
 
         }
 
@@ -857,7 +859,7 @@ const Login = () => {
                     <div className="md:w-1/2 bg-white rounded-lg p-8 flex flex-col w-full gap-8 max-w-md min-h-[384px] border-2 border-solid border-orange-400">
 
                         <h2 className="text-gray-900 xl:text-3xl text-2xl font-medium title-font">
-                            Sign Up
+                            Sign in
                         </h2>
 
                         <div className="flex flex-col gap-6">
@@ -924,23 +926,17 @@ const Login = () => {
 
 
                         <div className="flex gap-3 justify-between">
-                            <button onClick={() => {
-                                setIsAlreadyRegistered(false);
-                                setIsSignInInvalid(false);
-                                handleSignUp();
-                            }} className='w-1/2 rounded-lg bg-cyan-400 text-white
-                            py-3 min-w-max text-xl font-medium'>
-                                Sign Up
-                            </button>
 
                             <button onClick={() => {
                                 setIsAlreadyRegistered(false);
                                 setPasswordError('');
                                 setIsSignInInvalid(false);
                                 handleSignIn();
-                            }} className="w-1/2 text-white bg-red-500 hover:bg-red-600 border-0  focus:outline-none  rounded text-lg min-w-max">
+                            }} className="w-1/2 text-black font-medium   focus:outline-none py-3 text-lg min-w-max border-0 border-solid border-orange-400 rounded-lg  bg-yellow-300 ">
                                 Sign in
                             </button>
+
+
                         </div>
 
                     </div>
