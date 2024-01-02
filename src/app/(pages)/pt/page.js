@@ -16,7 +16,7 @@ const Product = () => {
     const fetcher = (...args) => fetch(...args).then(res => res.json());
 
     // step 03 :: swr :: get data by useSwr function.... 
-    const { data: ptData, error: ptDataError, isLoading: ptDataIsLoading } = useSWR('/api/read-all-pt', fetcher);
+    const { data: ptData, error: ptDataError, isLoading: ptDataIsLoading } = useSWR('/api/pt', fetcher);
 
     // ---------------------------------------------------------
     console.log(`ptDataIsLoading =`, ptDataIsLoading);

@@ -16,7 +16,7 @@ export async function GET(request) {
 
     const { data: products, error } = await supabase
         .from('products')
-        .select()
+        .select('*')
 
     success = (products) ? true : false;
     message = (products) ?
@@ -35,10 +35,3 @@ export async function GET(request) {
     });
 
 }
-
-
-
-
-
-
-
