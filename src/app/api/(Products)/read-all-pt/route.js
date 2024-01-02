@@ -14,7 +14,7 @@ export async function GET(request) {
     const supabase = createServerComponentClient({ cookies });
 
 
-    let { data: products, error } = await supabase
+    const { data: products, error } = await supabase
         .from('products')
         .select('*')
 
