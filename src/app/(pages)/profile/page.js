@@ -227,10 +227,7 @@ const Profile = () => {
     }, [userChange])
     // -----------------------------------------
 
-
-
-
-
+    
     // step 12.01 :: create handleSignOut :: async :: Function
     const handleSignOut = async () => {
         // ------------------------------------------------------

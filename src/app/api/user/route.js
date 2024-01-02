@@ -6,8 +6,12 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
 
-    var success = false;
+    var successSession = false;
+    var successUserProfile = false;
     var message = '';
+    var user_id;
+    var userProfile;
+    var userProfileError;
 
     // step 02 :: intialize supabse :: 
     const supabase = createServerComponentClient({ cookies });
@@ -20,8 +24,6 @@ export async function GET(request) {
     console.log(`sessionData=`, sessionData);
     // "sessionData" is a Object ::
 
-
-    var user = sessionData.session?.user;
     // ------------------------------------------------
     // Step 11.10  :: "sessionData?.session" :: Two Options ::
     // 1) Object 2) null
@@ -43,11 +45,42 @@ export async function GET(request) {
         // So, from "session" in "sessionData" ,  
         // We determines that "User is Logged in"
         // ---------------------------------------------------------
+
+        successSession = true;
+        user_id = sessionData.session?.user.id;
+        message = `${user_id} is Logged in...`
+
+        // Find by user_id
+        // -------------------
+        const { data: findUserProfileData, error: findUserProfileError } = await supabase
+            .from('profiles')
+            .select()
+            .eq('user_id', user_id);
+
+
+        // if there is dfata, then Set all State variables...
+        if (findUserProfileData !== null &&
+            findUserProfileData[0] !== undefined &&
+            findUserProfileError == null) {
+
+            userProfile = findUserProfileData[0];
+
+            successUserProfile = true;
+            message = `User is Logged in...And, UserProfile is received...`;
+
+        } else {
+            successUserProfile = false;
+            userProfileError = findUserProfileError;
+            message = `User is Logged in...But, UserProfile is not received...`;
+        }
+
     }
 
     // "sessionData?.session" :: 2) null 
     if (sessionData.session == null) {
         // If it is null, Then User is Logged Out....
+
+        message = `User is not Logged in...Please Log in to see User Data...`
 
         // ----------------------------------------------------
         console.log(`sessionData.session=`, sessionData.session);
@@ -65,20 +98,13 @@ export async function GET(request) {
         // ----------------------------------------------------
     }
 
-
-    // Find by user_id
-    // -------------------
-    // const { data: findUserProfileData, error: findUserProfileError } = await supabase
-    //     .from('profiles')
-    //     .select()
-    //     .eq('email_id', 'iampritesh13@gmail.com');
-
-
-
     return NextResponse.json({
-        success,
+        successSession,
+        successUserProfile,
         message,
-        user: user,
+        user_id,
+        userProfile,
+        userProfileError
         // findUserProfileData: findUserProfileData
     });
 

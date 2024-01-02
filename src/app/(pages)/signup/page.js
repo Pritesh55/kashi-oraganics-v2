@@ -66,9 +66,6 @@ const SignUp = () => {
     const [mobile_number, setMobile_number] = useState('');
     const [address, setAddress] = useState('');
 
-
-
-
     // -------------------------------------------------
     // Step 11.05 :: initiate useEffect ::
     useEffect(() => {
@@ -227,10 +224,6 @@ const SignUp = () => {
 
     }, [userChange])
     // -----------------------------------------
-
-
-
-
 
     // step 12.01 :: create handleSignOut :: async :: Function
     const handleSignOut = async () => {
