@@ -1,8 +1,13 @@
-// step 01 :: import "createServerComponentClient" and "cookies"
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-// -----------------------------------------
+// src\app\api\pt\route.js
+// ---------------------------
+
 import { NextResponse } from "next/server";
+// -----------------------------------------
+// Supabase :: Step 02.01 :: in Server components ::  
+import supabase from "@/app/components/supabase/sbClient";
+// just import "supabase client file :: ...
+// -----------------------------------------
+
 
 export async function GET(request) {
 
@@ -10,11 +15,8 @@ export async function GET(request) {
     var message = '';
 
 
-    // step 02 :: intialize supabse :: 
-    const supabase = createServerComponentClient({ cookies });
-
-
-    const { data: products, error } = await supabase
+    // step 02 :: Use supabse.from :: 
+    const { data: products, error:productsError } = await supabase
         .from('products')
         .select('*')
 
@@ -28,7 +30,7 @@ export async function GET(request) {
         success,
         message,
         products,
-        error
+        productsError
 
 
         // findUserProfileData: findUserProfileData
