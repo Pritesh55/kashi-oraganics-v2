@@ -11,8 +11,8 @@ const Cre_pt = () => {
     return (
         <>
             <div className="flex flex-col gap-y-12 items-start">
-                <button onClick={() => { setFormDisplay(true) }} className="btn-tp bg-transparent text-black border-2 border-solid border-red-400 rounded-lg focus:outline-none flex justify-center items-center gap-2 text-sm md:text-lg leading-6 py-2 px-4 md:px-8 font-medium" >
-                    Create Product
+                <button onClick={() => { setFormDisplay(!formDisplay) }} className="btn-tp bg-transparent text-black border-2 border-solid border-red-400 rounded-lg focus:outline-none flex justify-center items-center gap-2 text-base md:text-lg leading-6 py-2 px-4 md:px-8 font-medium" >
+                    Create New Product
                 </button>
 
                 <div className={`${(formDisplay) ? 'block' : 'hidden'}`}>
