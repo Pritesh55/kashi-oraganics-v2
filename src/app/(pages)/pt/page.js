@@ -14,8 +14,6 @@ import axios from 'axios';
 
 const Product = () => {
 
-    const supabase = createClientComponentClient();
-
     const [isProducts, setIsProducts] = useState(false);
     const [products, setProducts] = useState([]);
 
@@ -81,7 +79,7 @@ const Product = () => {
                                             {/* Image  */}
                                             < Image
                                                 // -----------------------
-                                                src={(curpt.pt_images) ? `${curpt.pt_images}` : `https://dummyimage.com/400x301`}
+                                                src={(curpt.pt_images) ? `${curpt.pt_images}` : `https://scontent.famd1-2.fna.fbcdn.net/v/t39.30808-6/416842063_679619837687731_2693038348619092119_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3635dc&_nc_ohc=L56bV-0G58AAX-QdVLB&_nc_ht=scontent.famd1-2.fna&oh=00_AfCq4-8D4bwWTgasZYan-urc8-v0JIC1OKitMzzwlEpxtw&oe=659B81CD`}
 
                                                 // -----------------------
                                                 alt="ecommerce"
