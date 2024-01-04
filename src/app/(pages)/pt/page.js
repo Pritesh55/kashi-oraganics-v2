@@ -31,7 +31,6 @@ const Product = () => {
                 {/* <Show_All_products_Admin></Show_All_products_Admin> */}
                 
             </div>
-
         </section>
     )
 }
