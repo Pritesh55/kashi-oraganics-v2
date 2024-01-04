@@ -5,7 +5,7 @@ const Show_All_products_Admin = () => {
     return (
         <div className="flex flex-col items-start border-orange-400 border-2 rounded-lg px-10 pt-5 pb-5 w-full h-max max-w-[100%] md:max-w-[45%]">
 
-            <div className=''>{`${`userEmailFull`}`} </div>
+            {/* <div className=''>{`${`userEmailFull`}`} </div> */}
 
             {/* id */}
             <div className="relative w-full ">
@@ -20,6 +20,7 @@ const Show_All_products_Admin = () => {
                         </button>
                     </>
                 } */}
+                
 
                 <button onClick={() => {
                     // updateProduct(id);

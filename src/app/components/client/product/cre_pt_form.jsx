@@ -37,7 +37,7 @@ const Cre_pt_form = () => {
             console.log("CreateProduct Started...");
             // ------------------------------------------------------
 
-            await axios.post('/api/create-pt', {
+            await axios.post('/api/pt/create-pt', {
 
                 pt_title,
                 pt_description,

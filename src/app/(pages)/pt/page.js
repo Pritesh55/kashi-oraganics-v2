@@ -28,7 +28,7 @@ const Product = () => {
                 </div>
 
                 <Show_all_products></Show_all_products>
-                <Show_All_products_Admin></Show_All_products_Admin>
+                {/* <Show_All_products_Admin></Show_All_products_Admin> */}
                 
             </div>
 

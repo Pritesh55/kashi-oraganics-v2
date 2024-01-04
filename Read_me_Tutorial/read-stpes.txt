@@ -150,6 +150,69 @@ https://supabase.com/dashboard/project/okfvfltvjlpvzhiqhgyp/auth/users
 
 
 
+{
+  "id": 1,
+  "created_at": "2023-12-29T17:54:24.444452+00:00",
+  "pt_title": "Valmiki Ramayana",
+  "pt_description": " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus voluptatibus officia iste consequatur saepe quas sapiente sunt aliquam iure accusantium sequi repellendus, perferendis temporibus obcaecati id deleniti culpa totam distinctio sint nihil.",
+  "pt_price": 450,
+  "pt_category": "Itihas",
+  "pt_brand": "Gita Press",
+  "pt_images": "https://dummyimage.com/400x301",
+  "pt_discount_percent": 20,
+  "pt_stock": 25,
+  "pt_rating": 4.5,
+  "pt_photo_thumbnail": null,
+  "list_number": 1
+  },
+  {
+  "id": 10,
+  "created_at": "2023-12-29T22:28:36.936474+00:00",
+  "pt_title": "iPhone X",
+  "pt_description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+  "pt_price": 899,
+  "pt_category": "smartphones",
+  "pt_brand": "Apple",
+  "pt_images": "https://i.dummyjson.com/data/products/2/1.jpg",
+  "pt_discount_percent": 17,
+  "pt_stock": null,
+  "pt_rating": 4.1,
+  "pt_photo_thumbnail": null,
+  "list_number": 2
+  },
+  {
+  "id": 14,
+  "created_at": "2023-12-29T22:44:29.741371+00:00",
+  "pt_title": "Gulab Powder 50 Gram",
+  "pt_description": "Dry Rose Flower Powder Gulab Powder 50 Gram • Treats Wounds",
+  "pt_price": 45,
+  "pt_category": "groceries",
+  "pt_brand": "Dry Rose",
+  "pt_images": "https://i.dummyjson.com/data/products/25/1.png",
+  "pt_discount_percent": 15,
+  "pt_stock": 47,
+  "pt_rating": 4.1,
+  "pt_photo_thumbnail": null,
+  "list_number": 3
+  },
+  {
+  "id": 38,
+  "created_at": "2023-12-30T02:41:06.204011+00:00",
+  "pt_title": "Ubtan Facewash",
+  "pt_description": "",
+  "pt_price": 50,
+  "pt_category": "",
+  "pt_brand": "",
+  "pt_images": "",
+  "pt_discount_percent": null,
+  "pt_stock": null,
+  "pt_rating": null,
+  "pt_photo_thumbnail": "",
+  "list_number": 4
+  }
+
+
+
 
 
 
