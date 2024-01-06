@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Cre_pt_form from './cre_pt_form';
 
 
-const Cre_pt = () => {
+const Cre_pt = ({ revalidateAll }) => {
 
     const [formDisplay, setFormDisplay] = useState(false)
 
@@ -16,7 +16,7 @@ const Cre_pt = () => {
                 </button>
 
                 <div className={`${(formDisplay) ? 'block' : 'hidden'}`}>
-                    <Cre_pt_form></Cre_pt_form>
+                    <Cre_pt_form revalidateAll={revalidateAll}></Cre_pt_form>
                 </div>
 
             </div>

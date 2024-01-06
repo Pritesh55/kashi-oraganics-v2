@@ -27,7 +27,7 @@ const Product = async () => {
 
                 <div className="relative h-[50px]">
                     <div className="absolute bg-white top-0 left-0 z-[9999]">
-                        <Cre_pt></Cre_pt>
+                        <Cre_pt revalidateAll={revalidateAll}></Cre_pt>
                     </div>
 
                 </div>

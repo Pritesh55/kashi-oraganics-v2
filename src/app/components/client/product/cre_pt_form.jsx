@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
-const Cre_pt_form = () => {
+const Cre_pt_form = ({ revalidateAll }) => {
 
     const router = useRouter();
 
@@ -59,33 +59,17 @@ const Cre_pt_form = () => {
                     setIsNewProductCreated(true);
                     setIsptCreatedMessage(' Thank you, You created a New Product...');
 
-                    function wait(ms) {
-                        var start = new Date().getTime();
-                        var end = start;
-                        while (end < start + ms) {
-                            end = new Date().getTime();
-                        }
-                    }
-
-                    wait(5000);
+                    // -----------------------
+                    revalidateAll();
+                    // -----------------------
                     setIsNewProductCreated(false);
-              
+
 
                 } else {
                     setIsNewProductCreated(true);
                     setIsptCreatedMessage('Oh, There is an Error..., Product is not created..');
-
-                    function wait(ms) {
-                        var start = new Date().getTime();
-                        var end = start;
-                        while (end < start + ms) {
-                            end = new Date().getTime();
-                        }
-                    }
-
-                    wait(5000);
                     setIsNewProductCreated(false);
-                  
+
 
                 }
                 // -------------------------

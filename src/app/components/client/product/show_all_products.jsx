@@ -52,17 +52,12 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
         // Define async function :: to fetch data ::
         const getProducts = async () => {
 
-            // revalidateAll();
-            // const { data: products, error: productsError } = await supabase
-            //     .from('products')
-            //     .select('*');
 
 
-            // if (products) {
-            //     setIsProducts(true);
-            //     setProducts(products);
-            //     setPtUpdated(false);
-            // }
+
+           
+                setPtUpdated(false);
+        
 
             // Axios GET Default
             // await axios
@@ -91,7 +86,10 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
         console.log("updateProduct Started...\n\n");
         // ----------------------------------------------------
         // -------------------------
-        wait(1000);
+        // Revelidate data
+        const data = await revalidateAll();
+        setIsProducts(true);
+        setProducts(data);
         setPtUpdated(true);
         // -------------------------
         // ------------------------------------------------------
@@ -128,7 +126,14 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
 
         if (deletePtError == null) {
             // -------------------------
-            revalidateAll();
+
+            // Revelidate data
+            const data = await revalidateAll();
+            setIsProducts(true);
+            setProducts(data);
+
+
+
             // Delete product :: step 01.04.01 :: go to '/api/pt' 
             // and check => export const revalidate = 1; 
             // => and get revalidate time in sec..=> and wait for that time...
