@@ -1,3 +1,4 @@
+// src\app\components\client\product\show_all_products.jsx
 // step 0 :: 'use client'
 'use client'
 
@@ -7,20 +8,19 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 // step 01.01 :: supabase in client component :: import axios ::
 import axios from 'axios';
 // -------------------------------
-import Cre_pt from '@/app/components/client/product/cre_pt';
 import Image from 'next/image';
-import Vertical_Card from './atoms/Vertical_Card';
 
 
 
-const Show_all_products = () => {
+const Show_all_products = ({ revalidateAll, productsFS }) => {
 
     const supabase = createClientComponentClient();
 
     // step 01.02 :: supabase in client component ::
     // :: Define useState Variable... ::
-    const [isProducts, setIsProducts] = useState(false);
-    const [products, setProducts] = useState([]);
+    const [isProducts, setIsProducts] = useState(true);
+    const [products, setProducts] = useState(productsFS);
+    const [newproducts, setNewProducts] = useState([]);
 
 
     // -------------------------------------------------
@@ -35,6 +35,16 @@ const Show_all_products = () => {
     // ------------------------------------
     const [ptUpdated, setPtUpdated] = useState(false);
 
+
+    function wait(s) {
+        var start = new Date().getTime();
+        var end = start;
+        while (end < start + (s * 1000)) {
+            end = new Date().getTime();
+        }
+    }
+
+
     // step 01.03 :: supabase in client component :: 
     // :: initiate useEffect :: get data by axios.get
     useEffect(() => {
@@ -42,17 +52,30 @@ const Show_all_products = () => {
         // Define async function :: to fetch data ::
         const getProducts = async () => {
 
+            // revalidateAll();
+            // const { data: products, error: productsError } = await supabase
+            //     .from('products')
+            //     .select('*');
+
+
+            // if (products) {
+            //     setIsProducts(true);
+            //     setProducts(products);
+            //     setPtUpdated(false);
+            // }
+
             // Axios GET Default
-            await axios
-                .get(`/api/pt`)
-                .then((response) => {
-                    // step 01.04 :: supabase in client component ::
-                    // set :: useState variables ::
-                    setIsProducts(true);
-                    setProducts(response.data.products);
-                    setPtUpdated(false);
-                });
+            // await axios
+            //     .get(`/api/pt`)
+            //     .then((response) => {
+            //         // step 01.04 :: supabase in client component ::
+            //         // set :: useState variables ::
+            //         setIsProducts(true);
+            //         setProducts(response.data.products);
+            //         setPtUpdated(false);
+            //     });
             // -------------------------------
+
         }
 
         // Step 11.08 :: call async function ::
@@ -61,43 +84,66 @@ const Show_all_products = () => {
     }, [ptUpdated]);
 
 
-
     // step 13.01 :: create handleSignIn :: async :: Function
     const updateProduct = async (id) => {
         // ----------------------------------------------------
         console.log("\n\n");
         console.log("updateProduct Started...\n\n");
         // ----------------------------------------------------
-
+        // -------------------------
+        wait(1000);
+        setPtUpdated(true);
+        // -------------------------
         // ------------------------------------------------------
         console.log("updateProduct Ended...");
         console.log("\n\n");
         // ----------------------------------------------------
     }
 
-    // step 13.01 :: create handleSignIn :: async :: Function
+
+
+
+    // Delete product :: step 01.02 :: create onclick async function 
+    // :: take "id of currunt product" as arguments...
     const deleteProduct = async (id) => {
         // ----------------------------------------------------
         console.log("\n\n");
         console.log("deleteProduct Started...\n\n");
+
         // ----------------------------------------------------
         console.log(`id = `, id);
+        // -------------------------
 
 
+        // ------------------------------ 
+        // Delete product :: step 01.03 :: delete product from supabse...
         const { error: deletePtError } = await supabase
             .from('products')
             .delete()
             .eq('id', id);
 
-
+        // ------------------------------ 
         console.log(`deletePtError = `, deletePtError);
 
+
         if (deletePtError == null) {
+            // -------------------------
+            revalidateAll();
+            // Delete product :: step 01.04.01 :: go to '/api/pt' 
+            // and check => export const revalidate = 1; 
+            // => and get revalidate time in sec..=> and wait for that time...
+
+            // wait(3);
+            // Delete product :: step 01.05 :: 
             setPtUpdated(true);
+            // ReRun useEffect and get new product from '/api/pt' after 1 sec..
+            // for that, update State varibale value :: ptUpdated :: true 
+            // :: as mentioned in useeffect array...
+            // -------------------------
         }
 
         // ------------------------------------------------------
-        console.log("deleteProduct Ended...");
+        console.log(`${id} deleteProduct Ended...`);
         console.log("\n\n");
         // ----------------------------------------------------
     }
@@ -125,15 +171,20 @@ const Show_all_products = () => {
 
                                 <button onClick={() => {
                                     updateProduct(curpt.id);
-                                }} className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white">
+                                }}
+                                    className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white">
                                     {/* <Image src='/trash.svg' alt='' width={20} height={20} className=''></Image> */}
 
                                     {`Edit`}
                                 </button>
 
                                 <button onClick={() => {
+                                    // Delete product :: step 01.01 :: onclick => call function and 
+                                    // send "currunt product id" as parameter..
                                     deleteProduct(curpt.id);
-                                }} className="btn-tp absolute top-0 right-0 z-50 px-3 py-2 border-l-2 border-b-2 border-l-orange-400 border-b-orange-400 rounded-bl-lg rounded-tr-lg bg-white">
+                                    revalidateAll();
+                                }}
+                                    className="btn-tp absolute top-0 right-0 z-50 px-3 py-2 border-l-2 border-b-2 border-l-orange-400 border-b-orange-400 rounded-bl-lg rounded-tr-lg bg-white">
                                     <Image src='/trash-icon.svg' alt='' width={20} height={20} className=''></Image>
                                 </button>
 

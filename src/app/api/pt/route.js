@@ -1,12 +1,16 @@
 // src\app\api\pt\route.js
 // ---------------------------
-
 import { NextResponse } from "next/server";
 // -----------------------------------------
 // Supabase :: Step 02.01 :: in Server components ::  
 import supabase from "@/app/components/supabase/sbClient";
 // just import "supabase client file :: ...
 // -----------------------------------------
+
+
+// Delete product :: step 01.04.02 :: 
+// export const revalidate = 1;
+
 
 
 export async function GET(request) {
@@ -16,7 +20,7 @@ export async function GET(request) {
 
 
     // step 02 :: Use supabse.from :: 
-    const { data: products, error:productsError } = await supabase
+    const { data: products, error: productsError } = await supabase
         .from('products')
         .select('*')
 

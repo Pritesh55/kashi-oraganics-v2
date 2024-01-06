@@ -1,18 +1,23 @@
-// step 0 :: 'use client'
-'use client'
+import React from 'react'
 
-import React, { useEffect, useState } from 'react'
-// -------------------------------
-// step 01.01 :: supabase in client component :: import axios ::
-import axios from 'axios';
-// -------------------------------
 import Cre_pt from '@/app/components/client/product/cre_pt';
 import Show_all_products from '@/app/components/client/product/show_all_products';
-import Show_All_products_Admin from '@/app/components/client/product/Show_All_products_Admin';
+import { revalidateAll } from '@/app/actions';
+import axios from 'axios';
+import supabase from '@/app/components/supabase/sbClient';
 
 
+const Product = async () => {
 
-const Product = () => {
+    var isProductsFS = false;
+
+    const { data: products, error: productsError } = await supabase
+        .from('products')
+        .select('*');
+
+    if (productsError == null) {
+        isProductsFS = true;
+    }
 
 
     return (
@@ -27,9 +32,13 @@ const Product = () => {
 
                 </div>
 
-                <Show_all_products></Show_all_products>
-                {/* <Show_All_products_Admin></Show_All_products_Admin> */}
-                
+                {
+                    (isProductsFS) &&
+                    <Show_all_products revalidateAll={revalidateAll}
+                    productsFS={products}></Show_all_products>
+
+                }
+
             </div>
         </section>
     )

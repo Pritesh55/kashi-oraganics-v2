@@ -212,6 +212,77 @@ https://supabase.com/dashboard/project/okfvfltvjlpvzhiqhgyp/auth/users
   }
 
 
+  # -----------------------------------------------------------------------------------
+  import { revalidatePath } from 'next/cache'
+
+
+  revalidatePath('/blog/post-1' , 'page');
+  revalidatePath('/');
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

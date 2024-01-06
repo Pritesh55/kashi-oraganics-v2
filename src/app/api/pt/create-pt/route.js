@@ -1,6 +1,8 @@
 import supabase from "@/app/components/supabase/sbClient";
 // -----------------------------------------
 import { NextResponse } from "next/server";
+import { revalidatePath } from 'next/cache'
+
 
 export async function POST(request) {
 
@@ -37,8 +39,6 @@ export async function POST(request) {
     }
 
 
-
-
     // define create product data Object ::
     var insertOnePtData = {
         pt_title: pt_title_string,
@@ -68,12 +68,13 @@ export async function POST(request) {
         .from('products')
         .select('*');
 
-
     var message = (insertProductData !== null) ?
         `Yes, Product successfuly inserted to "products" table..` :
         `No, Product is not inserted to "products" table..`
 
-    var success = (insertProductData !== null) ? true : false
+    var success = (insertProductData !== null) ? true : false;
+
+  
 
     return NextResponse.json({
         success,
