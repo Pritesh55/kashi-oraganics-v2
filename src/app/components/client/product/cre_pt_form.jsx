@@ -2,12 +2,12 @@
 
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+
 import React, { useEffect, useState } from 'react'
 
 const Cre_pt_form = ({ revalidateAll }) => {
 
     const router = useRouter();
-
 
     const [pt_title, setPt_title] = useState('');
     const [pt_description, setPt_description] = useState('');
@@ -87,6 +87,7 @@ const Cre_pt_form = ({ revalidateAll }) => {
 
         if (cre_pt_btn) {
             createProduct();
+
         }
 
     }, [userChange])

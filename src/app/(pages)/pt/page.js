@@ -25,17 +25,12 @@ const Product = async () => {
 
             <div className="xl:container px-5 py-10 mx-auto flex flex-col gap-y-10">
 
-                <div className="relative h-[50px]">
-                    <div className="absolute bg-white top-0 left-0 z-[9999]">
-                        <Cre_pt revalidateAll={revalidateAll}></Cre_pt>
-                    </div>
 
-                </div>
 
                 {
                     (isProductsFS) &&
                     <Show_all_products revalidateAll={revalidateAll}
-                    productsFS={products}></Show_all_products>
+                        productsFS={products}></Show_all_products>
 
                 }
 
