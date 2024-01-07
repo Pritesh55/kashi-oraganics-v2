@@ -16,7 +16,10 @@ const Admin = async () => {
 
     return (
         <>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <div className="">
+                <pre>{JSON.stringify(data, null, 2)}</pre>
+            </div>
+
         </>
     )
 }
