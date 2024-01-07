@@ -35,6 +35,11 @@ export default supabase;
 // -----------------------------------
 // import supabase from "@/app/components/supabase/sbClient";
 // -----------------------------------
+
+
 // just type "import supabase" and select path...
 // => thus way import "supabase client file :: ...
 // -----------------------------------------
+
+
+// used in :: src\app\(pages)\pt\page.js ::: for products data :: Array of objects...

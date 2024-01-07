@@ -57,20 +57,16 @@ const Cre_pt_form = ({ revalidateAll }) => {
 
                 if (response.data.success == true) {
                     setIsNewProductCreated(true);
-                    setIsptCreatedMessage(' Thank you, You created a New Product...');
+                    setIsptCreatedMessage('Thank you, You created a New Product...');
 
                     // -----------------------
                     revalidateAll();
                     // -----------------------
-                    setIsNewProductCreated(false);
-
 
                 } else {
                     setIsNewProductCreated(true);
                     setIsptCreatedMessage('Oh, There is an Error..., Product is not created..');
                     setIsNewProductCreated(false);
-
-
                 }
                 // -------------------------
             }).catch(function (error) {
@@ -83,14 +79,19 @@ const Cre_pt_form = ({ revalidateAll }) => {
             // ------------------------------------------------------
             setCre_pt_btn(false);
             setUserChange(false);
+
+
+            router.refresh();
+            router.refresh();
+            router.refresh();
         }
 
         if (cre_pt_btn) {
             createProduct();
-
         }
 
     }, [userChange])
+
 
     return (
         <>
@@ -104,8 +105,6 @@ const Cre_pt_form = ({ revalidateAll }) => {
                 </>
 
             }
-
-
 
             {/* Sign-up or Sign-in Box */}
             <div className=" bg-white rounded-lg p-8 flex flex-col w-full gap-8 min-h-[384px] border-2 border-solid border-orange-400 relative">
@@ -279,6 +278,8 @@ const Cre_pt_form = ({ revalidateAll }) => {
                             setUserChange(true);
                             setCre_pt_btn(true);
                             setIsNewProductCreated(true);
+
+                            
                             // console.log("   Save and Update");
                             // console.log("Cre_pt_btn", cre_pt_btn);
                             // console.log("userChange", userChange);

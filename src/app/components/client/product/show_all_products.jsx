@@ -9,11 +9,17 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import axios from 'axios';
 // -------------------------------
 import Image from 'next/image';
-import Cre_pt from './cre_pt';
+import Cre_pt from './atoms/cre_pt_btn';
+import { useRouter } from 'next/navigation';
+
+
+
 
 
 
 const Show_all_products = ({ revalidateAll, productsFS }) => {
+
+    const router = useRouter();
 
     const supabase = createClientComponentClient();
 
@@ -53,27 +59,17 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
         // Define async function :: to fetch data ::
         const getProducts = async () => {
 
-            setPtUpdated(false);
 
 
-            // Axios GET Default
-            // await axios
-            //     .get(`/api/pt`)
-            //     .then((response) => {
-            //         // step 01.04 :: supabase in client component ::
-            //         // set :: useState variables ::
-            //         setIsProducts(true);
-            //         setProducts(response.data.products);
-            //         setPtUpdated(false);
-            //     });
+
+
             // -------------------------------
-
         }
 
         // Step 11.08 :: call async function ::
         getProducts();
 
-    }, [ptUpdated]);
+    }, []);
 
 
     // step 13.01 :: create handleSignIn :: async :: Function
@@ -105,8 +101,6 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
         // ----------------------------------------------------
         console.log(`id = `, id);
         // -------------------------
-
-
         // ------------------------------ 
         // Delete product :: step 01.03 :: delete product from supabse...
         const { error: deletePtError } = await supabase
@@ -126,8 +120,10 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
             setIsProducts(true);
             setProducts(data);
 
+            revalidateAll();
 
-
+            router.refresh();
+            router.refresh();
             // Delete product :: step 01.04.01 :: go to '/api/pt' 
             // and check => export const revalidate = 1; 
             // => and get revalidate time in sec..=> and wait for that time...
@@ -156,19 +152,9 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
 
         <>
 
-            <div className="relative h-[50px]">
-                <div className="absolute bg-white top-0 left-0 z-[9999]">
-                    <Cre_pt revalidateAll={revalidateAll}></Cre_pt>
-                </div>
 
 
-                <div className="">
-                    Update 
-                </div>
 
-            </div>
-
-            <hr />
 
 
             <div className="flex flex-wrap gap-x-4 gap-y-10 justify-evenly items-start">

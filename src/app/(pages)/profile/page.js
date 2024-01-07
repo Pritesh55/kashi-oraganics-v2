@@ -65,9 +65,6 @@ const Profile = () => {
     const [mobile_number, setMobile_number] = useState('');
     const [address, setAddress] = useState('');
 
-
-
-
     // -------------------------------------------------
     // Step 11.05 :: initiate useEffect ::
     useEffect(() => {
@@ -556,8 +553,9 @@ const Profile = () => {
             <>
 
                 {/* step 11.17 :: Ui screen after "Sign up" or after "sign in" :: */}
-                <section className="text-gray-600 body-font bg-white min-h-screen">
+                <section className="bg-white min-h-screen">
                     <div className="2xl:container mx-auto w-full flex gap-8 justify-between flex-wrap p-5 items-center">
+                        
                         <Link href='/' className="btn-tp bg-transparent text-black border-2 border-solid border-red-400 rounded-lg focus:outline-none flex justify-center items-center gap-2 text-sm md:text-lg leading-6 py-2 px-4 md:px-8 font-medium" >
 
                             <span className="">
@@ -763,7 +761,7 @@ const Profile = () => {
 
                         <hr className='border-b-2 border-solid border-orange-400 mt-12 mb-6' />
 
-                        <div className="py-6 flex flex-col gap-y-8">
+                        <div className="text-gray-600 py-6 flex flex-col gap-y-8">
                             {/* Print state variable :: 11.04 :: userProfile */}
                             <div className="">
                                 <pre className=''>
@@ -817,7 +815,7 @@ const Profile = () => {
                         </div>
 
                     </div>
-                </section >
+                </section>
             </>
         )
     }
