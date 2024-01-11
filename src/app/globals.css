@@ -23,6 +23,11 @@ body {
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
+*::selection {
+  background-color: #fde047;
+  color: black;
+}
+
 
 .label-s1 {
   @apply text-base 2xl:text-lg font-normal leading-relaxed tracking-wide capitalize text-black;
