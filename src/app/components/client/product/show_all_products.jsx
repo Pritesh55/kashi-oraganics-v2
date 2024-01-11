@@ -9,15 +9,10 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import axios from 'axios';
 // -------------------------------
 import Image from 'next/image';
-import Cre_pt from './atoms/cre_pt_btn';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-
-
-
-
-
-const Show_all_products = ({ revalidateAll, productsFS }) => {
+const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
 
     const router = useRouter();
 
@@ -75,19 +70,19 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
     // step 13.01 :: create handleSignIn :: async :: Function
     const updateProduct = async (id) => {
         // ----------------------------------------------------
-        console.log("\n\n");
-        console.log("updateProduct Started...\n\n");
+        // console.log("\n\n");
+        // console.log("updateProduct Started...\n\n");
         // ----------------------------------------------------
         // -------------------------
         // Revelidate data
         const data = await revalidateAll();
-        setIsProducts(true);
-        setProducts(data);
-        setPtUpdated(true);
+        // setIsProducts(true);
+        // setProducts(data);
+        // setPtUpdated(true);
         // -------------------------
         // ------------------------------------------------------
-        console.log("updateProduct Ended...");
-        console.log("\n\n");
+        // console.log("updateProduct Ended...");
+        // console.log("\n\n");
         // ----------------------------------------------------
     }
 
@@ -95,11 +90,11 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
     // :: take "id of currunt product" as arguments...
     const deleteProduct = async (id) => {
         // ----------------------------------------------------
-        console.log("\n\n");
-        console.log("deleteProduct Started...\n\n");
+        // console.log("\n\n");
+        // console.log("deleteProduct Started...\n\n");
 
         // ----------------------------------------------------
-        console.log(`id = `, id);
+        // console.log(`id = `, id);
         // -------------------------
         // ------------------------------ 
         // Delete product :: step 01.03 :: delete product from supabse...
@@ -109,7 +104,7 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
             .eq('id', id);
 
         // ------------------------------ 
-        console.log(`deletePtError = `, deletePtError);
+        // console.log(`deletePtError = `, deletePtError);
 
 
         if (deletePtError == null) {
@@ -138,29 +133,25 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
         }
 
         // ------------------------------------------------------
-        console.log(`${id} deleteProduct Ended...`);
-        console.log("\n\n");
+        // console.log(`${id} deleteProduct Ended...`);
+        // console.log("\n\n");
         // ----------------------------------------------------
     }
 
     // step 01.05 :: supabase in client component ::
     // Console.log :: useState variables ::
-    console.log(`isProducts= `, isProducts);
-    console.log(`products= `, products);
+    // console.log(`isProducts= `, isProducts);
+    // console.log(`products= `, products);
+    // console.log(`is_admin=`, is_admin)
 
     return (
 
         <>
 
-
-
-
-
-
             <div className="flex flex-wrap gap-x-4 gap-y-10 justify-evenly items-start">
                 {
 
-                    (isProducts && products[0]) &&
+                    (isProducts && products?.length > 0) &&
                     <>
 
 
@@ -169,27 +160,35 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
                                 // Do not use this <> </> Fragments inside return of .map method...
                                 // Otherwise :: "Each child in a list should have a unique "key" prop" ::warning will appear on console.log() of browser...
 
+
                                 <div key={curpt.id}
-                                    className="w-full sm:w-[360px]  border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
+                                    className="w-full sm:w-auto sm:min-w-[360px] sm:max-w-[60%] border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
 
-                                    <button onClick={() => {
-                                        updateProduct(curpt.id);
-                                    }}
-                                        className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white">
-                                        {/* <Image src='/trash.svg' alt='' width={20} height={20} className=''></Image> */}
+                                    {
+                                        (is_admin == true) && <>
+                                            <Link href={`/admin/edit_pt/${curpt.id}/`}
+                                                // className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white"
+                                                className=" absolute top-0 left-0 px-6 py-2 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white hover:bg-yellow-300"
+                                            >
+                                                {/* <Image src='/trash.svg' alt='' width={20} height={20} className=''></Image> */}
 
-                                        {`Edit`}
-                                    </button>
+                                                {`Edit`}
+                                            </Link>
 
-                                    <button onClick={() => {
-                                        // Delete product :: step 01.01 :: onclick => call function and 
-                                        // send "currunt product id" as parameter..
-                                        deleteProduct(curpt.id);
-                                        revalidateAll();
-                                    }}
-                                        className="btn-tp absolute top-0 right-0 z-50 px-3 py-2 border-l-2 border-b-2 border-l-orange-400 border-b-orange-400 rounded-bl-lg rounded-tr-lg bg-white">
-                                        <Image src='/trash-icon.svg' alt='' width={20} height={20} className=''></Image>
-                                    </button>
+                                            <button onClick={() => {
+                                                // Delete product :: step 01.01 :: onclick => call function and 
+                                                // send "currunt product id" as parameter..
+                                                deleteProduct(curpt.id);
+                                                revalidateAll();
+                                            }}
+                                                className=" absolute top-0 right-0 z-50 px-3 py-2 border-l-2 border-b-2 border-l-orange-400 border-b-orange-400 rounded-bl-lg rounded-tr-lg bg-white hover:bg-yellow-300">
+                                                <Image src='/trash-icon.svg' alt='' width={20} height={20} className=''></Image>
+                                            </button>
+
+                                        </>
+
+                                    }
+
 
                                     <a className="flex justify-center items-center relative h-56 rounded-lg overflow-hidden">
 
@@ -213,9 +212,9 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
                                     <div className="flex flex-col gap-y-4 items-start leading-normal text-black capitalize px-6 py-6">
 
 
-                                        {(curpt.pt_category && curpt.pt_brand) &&
+                                        {(curpt.pt_category || curpt.pt_brand) &&
                                             <>
-                                                <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-10">
+                                                <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-5">
 
                                                     {(curpt.pt_category) &&
                                                         <>
@@ -246,7 +245,7 @@ const Show_all_products = ({ revalidateAll, productsFS }) => {
 
                                         {(curpt.pt_description) &&
                                             <>
-                                                <p className="h-20 overflow-hidden">
+                                                <p className="max-h-20 w-[340px] overflow-hidden">
                                                     {curpt.pt_description}
                                                 </p>
                                             </>

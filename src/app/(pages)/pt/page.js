@@ -21,14 +21,9 @@ import supabase from '@/app/components/supabase/sbClient';
 import { revalidateAll } from '@/app/actions';
 // :: to pass as props to revalidate cache..
 // -------------------------------------------
-
-import Cre_pt_btn from '@/app/components/client/product/atoms/cre_pt_btn';
 import Show_all_products from '@/app/components/client/product/show_all_products';
 
-
-
-
-const Product = async () => {
+const Product = async ({ is_admin = false }) => {
 
     // product :: step 01.01 :: v1 (Variable 01) - isProductsFS is set to false..
     // isProductsFS == is products "from server" (FS) is there ?? No..
@@ -64,24 +59,17 @@ const Product = async () => {
         // -------------------------------------
     }
 
-    console.log(`are there products from server ??  = `, isProductsFS);
-    console.log(`isProductsFS = `, isProductsFS);
+    // console.log(`are there products from server ??  = `, isProductsFS);
+    // console.log(`isProductsFS = `, isProductsFS);
 
-    console.log(`Yes, Here is the array of products..\n `);
-    console.log(`products = `, products);
-
+    // console.log(`Yes, Here is the array of products..\n `);
+    // console.log(`products = `, products);
+    // console.log(`is_admin=`, is_admin)
 
     return (
-        <section className="bg-white min-h-screen px-2 pb-20">
+        <section className="bg-white min-h-screen px-2">
 
             <div className="xl:container px-5 py-10 mx-auto flex flex-col gap-y-10">
-
-                <div className="relative h-[50px]">
-                    <div className="absolute bg-white top-0 left-0 z-[9999]">
-                        <Cre_pt_btn revalidateAll={revalidateAll}></Cre_pt_btn>
-                    </div>
-
-                </div>
 
                 {/* // product :: step 01.04 :: 
                 :: If there are products from server :: (isProductsFS), 
@@ -92,6 +80,7 @@ const Product = async () => {
                     <Show_all_products
                         productsFS={products}
                         revalidateAll={revalidateAll}
+                        is_admin={is_admin}
                     ></Show_all_products>
 
                     // product :: step 01.05.01 :: props :: {revalidateAll}

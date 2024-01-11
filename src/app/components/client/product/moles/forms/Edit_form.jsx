@@ -1,14 +1,21 @@
 'use client'
 
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import React, { useEffect, useState } from 'react'
-import Form_heading from './atoms/Form_heading';
-import Form_field_text from './Form_field_text';
-import Form_field_text_area from './Form_field_text_area';
+import Form_heading from '../../atoms/Form_heading';
+import Form_field_text from '../../Form_field_text';
+import Form_field_text_area from '../../Form_field_text_area';
+import { getLastWord } from '@/functions/urlFunctions';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-const Cre_pt_form = ({ revalidateAll }) => {
+const Edit_form = ({ revalidateAll }) => {
+
+    const pathname = usePathname();
+
+    const supabase = createClientComponentClient()
 
     const router = useRouter();
 
@@ -85,124 +92,179 @@ const Cre_pt_form = ({ revalidateAll }) => {
     }
     // ----------------------------------------
 
-    const [cre_pt_btn, setCre_pt_btn] = useState(false);
+    const [fillInitialValues, set_fillInitialValues] = useState(false)
+
+    const [edit_pt_btn, setEdit_pt_btn] = useState(false);
     const [userChange, setUserChange] = useState(false);
 
 
-    const [isNewProductCreated, setIsNewProductCreated] = useState(false);
-    const [isptCreatedMessage, setIsptCreatedMessage] = useState('');
+    const [isNewProductEdited, setIsNewProductEdited] = useState(false);
+    const [isptEditedMessage, setIsptEditedMessage] = useState('');
 
     useEffect(() => {
 
-        const createProduct = async () => {
+        const EditProduct = async () => {
             // ------------------------------------------------------
             // console.log("\n\n");
-            // console.log("CreateProduct Started...");
+            // console.log("EditProduct Started...");
             // ------------------------------------------------------
 
-            var create_pt_object = {
-                // ...user_profile,
-                pt_title: `${pt_title}`,
-                pt_description: `${pt_description}`,
-                pt_category: `${pt_category}`,
-                pt_brand: `${pt_brand}`,
-                pt_images: `${pt_images}`,
-                pt_photo_thumbnail: `${pt_photo_thumbnail}`,
+            var pt_id = getLastWord(`${pathname}`);
+            // console.log(`Your Product's id =`, pt_id);
 
-                pt_price: `${pt_price}`,
-                pt_discount_percent: `${pt_discount_percent}`,
-                pt_rating: `${pt_rating}`,
-                pt_stock: `${pt_stock}`
-            }
+            const { data: productsData, error: productsError } = await supabase
+                .from('products')
+                .select("*")
+                .eq('id', pt_id);
 
-            await axios.post('/api/pt/create-pt', { create_pt_object }).then(function (response) {
-                // -------------------------
-                // console.log(`create Product Response`, response.data);
+            // console.log(`productsData = `, productsData)
 
-                if (response.data.success == true) {
-                    // setIsptCreatedMessage('Thank you, You created a New Product...');
-                    // setIsNewProductCreated(true);
+            if (productsData?.length > 0) {
+                const pt_object = productsData[0];
 
-                    // function wait(s) {
-                    //     var start = new Date().getTime();
-                    //     var end = start;
-                    //     while (end < start + (s * 1000)) {
-                    //         end = new Date().getTime();
-                    //     }
-                    // }
+                // console.log(`pt_object =`, pt_object);
 
-                    // wait(3);
-                    // // -----------------------
-                    revalidateAll();
-                    router.back();
-                    // -----------------------
+                if (fillInitialValues == false) {
 
-                } else {
-                    setIsptCreatedMessage('Oh, There is an Error..., Product is not created..');
-                    setIsNewProductCreated(true);
+                    set_pt_title(pt_object.pt_title);
+                    set_pt_description(pt_object.pt_description);
+                    set_pt_brand(pt_object.pt_brand);
+                    set_pt_category(pt_object.pt_category);
+                    set_pt_photo_thumbnail(pt_object.pt_photo_thumbnail);
 
-                    function wait(s) {
-                        var start = new Date().getTime();
-                        var end = start;
-                        while (end < start + (s * 1000)) {
-                            end = new Date().getTime();
-                        }
+                    set_pt_price(pt_object.pt_price);
+                    set_pt_stock(pt_object.pt_stock);
+                    set_pt_rating(pt_object.pt_rating);
+                    set_pt_discount_percent(pt_object.pt_discount_percent);
+
+                    set_fillInitialValues(true);
+
+                    // console.log(`pt_title =`, pt_title)
+
+                }
+
+
+
+                if (edit_pt_btn) {
+
+                    var update_pt_object = {
+                        // ...user_profile,
+                        pt_title: `${pt_title}`,
+                        pt_description: `${pt_description}`,
+                        pt_category: `${pt_category}`,
+                        pt_brand: `${pt_brand}`,
+                        pt_images: `${pt_images}`,
+                        pt_photo_thumbnail: `${pt_photo_thumbnail}`,
+
+                        pt_price: `${pt_price}`,
+                        pt_discount_percent: `${pt_discount_percent}`,
+                        pt_rating: `${pt_rating}`,
+                        pt_stock: `${pt_stock}`
                     }
 
-                    wait(3);
+                    await axios.put('/api/pt/edit-pt', {
+                        pt_object, update_pt_object
+                    },
+                    ).then((response) => {
+                        // -------------------------
+                        // console.log(`Edit Product Response`, response.data);
 
+                        if (response.data.success == true) {
+                            revalidateAll();
 
-                    setIsNewProductCreated(false);
+                            // setIsNewProductEdited(true);
+                            // setIsptEditedMessage('Thank you, You Edited a New Product...');
+
+                            // function wait(s) {
+                            //     var start = new Date().getTime();
+                            //     var end = start;
+                            //     while (end < start + (s * 1000)) {
+                            //         end = new Date().getTime();
+                            //     }
+                            // }
+
+                            // wait(2);
+                            // setIsNewProductEdited(false);
+                            // // -----------------------
+
+                            router.back();
+                            // -----------------------
+
+                        } else {
+                            setIsNewProductEdited(true);
+
+                            setIsptEditedMessage('Oh, There is an Error..., Product is not Edited..');
+
+                            function wait(s) {
+                                var start = new Date().getTime();
+                                var end = start;
+                                while (end < start + (s * 1000)) {
+                                    end = new Date().getTime();
+                                }
+                            }
+
+                            wait(3);
+
+                            setIsNewProductEdited(false);
+                        }
+                        // -------------------------
+                    }).catch(function (error) {
+                        // console.log(`Edit Product response Error`, error);
+                    });
                 }
-                // -------------------------
-            }).catch(function (error) {
-                console.log(`create Product response Error`, error);
-            });
+
+            }
+
+
+
 
             // ------------------------------------------------------
-            // console.log("CreateProduct Ended...");
+
+
+            // console.log("EditProduct Ended...");
             // console.log("\n\n");
             // ------------------------------------------------------
-            setCre_pt_btn(false);
+            setEdit_pt_btn(false);
             setUserChange(false);
 
         }
 
-        if (cre_pt_btn) {
-            createProduct();
+        if (fillInitialValues == false || edit_pt_btn) {
+            EditProduct();
         }
 
-    }, [userChange])
+
+
+    }, [userChange, edit_pt_btn, fillInitialValues])
 
 
     return (
         <>
             {
-                (isNewProductCreated) && <>
+                (isNewProductEdited) && <>
                     <h2 className="px-4 py-2 border-2 border-solid border-orange-400 fixed z-50 bg-white text-black top-5 right-8 rounded-lg text-lg shadow-xl">
-                        {isptCreatedMessage}
+                        {isptEditedMessage}
                     </h2>
                 </>
 
             }
 
             {/* Sign-up or Sign-in Box */}
-            <div className=" bg-white p-8 flex flex-col w-full gap-8 min-h-[384px] relative">
+            <div className=" bg-white rounded-lg p-8 flex flex-col w-full gap-8 min-h-[384px] border-2 border-solid border-orange-400 relative">
 
 
                 <div className="flex justify-between gap-x-6 items-center">
-                    <Form_heading name={`Create product`}></Form_heading>
+                    <Form_heading name={`Edit product`}></Form_heading>
 
                     <button
                         onClick={() => {
-                            setUserChange(true);
-                            setCre_pt_btn(true);
+                            setEdit_pt_btn(true);
                             // console.log("   Save and Update");
-                            // console.log("Cre_pt_btn", cre_pt_btn);
+                            // console.log("Edit_pt_btn", edit_pt_btn);
                             // console.log("userChange", userChange);
                         }}
                         className="w-auto px-6 text-lg leading-6 py-3 bg-yellow-300 text-black font-medium rounded-lg">
-                        Create Product
+                        Edit Product
                     </button>
                 </div>
 
@@ -219,6 +281,14 @@ const Cre_pt_form = ({ revalidateAll }) => {
                             placeholder_name={`Product Name`}
                         />
 
+
+                        <Form_field_text
+                            state_var={pt_brand}
+                            handler_name={pt_brand_Handler}
+                            label_name={`Brand Name`}
+                            placeholder_name={`Brand Name`}
+                        />
+
                         <Form_field_text
                             state_var={pt_category}
                             handler_name={pt_category_Handler}
@@ -227,12 +297,6 @@ const Cre_pt_form = ({ revalidateAll }) => {
                         />
 
 
-                        <Form_field_text
-                            state_var={pt_brand}
-                            handler_name={pt_brand_Handler}
-                            label_name={`Brand Name`}
-                            placeholder_name={`Brand Name`}
-                        />
 
                         <Form_field_text
                             state_var={pt_photo_thumbnail}
@@ -278,14 +342,13 @@ const Cre_pt_form = ({ revalidateAll }) => {
 
                     <button
                         onClick={() => {
-                            setUserChange(true);
-                            setCre_pt_btn(true);
+                            setEdit_pt_btn(true);
                             // console.log("   Save and Update");
-                            // console.log("Cre_pt_btn", cre_pt_btn);
+                            // console.log("Edit_pt_btn", edit_pt_btn);
                             // console.log("userChange", userChange);
                         }}
                         className="w-full text-lg leading-6 py-3 bg-yellow-300 text-black font-medium rounded-lg">
-                        Create Product
+                        Edit Product
                     </button>
                 </div>
 
@@ -294,4 +357,4 @@ const Cre_pt_form = ({ revalidateAll }) => {
     )
 }
 
-export default Cre_pt_form
+export default Edit_form

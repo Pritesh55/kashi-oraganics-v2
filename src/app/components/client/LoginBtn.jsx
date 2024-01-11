@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr';
 
-const LoginBtn = ({ isBgDark = true }) => {
+const LoginBtn = ({ isBgDark = true, signup = false, signin = false, revalidateAll }) => {
     const router = useRouter();
 
     const [user_id, setUser_id] = useState();
@@ -39,7 +39,7 @@ const LoginBtn = ({ isBgDark = true }) => {
                 setUser_id(sessionData.session?.user?.id);
                 setEmail_id(sessionData.session.user.email);
 
-                console.log(`user_id =`, user_id);
+                // console.log(`user_id =`, user_id);
                 // --------------------------------------
 
             }
@@ -60,8 +60,8 @@ const LoginBtn = ({ isBgDark = true }) => {
     // step 12.01 :: create handleSignOut :: async :: Function
     const handleSignOut = async () => {
         // ------------------------------------------------------
-        console.log("\n\n");
-        console.log("handleSignOut Started...");
+        // console.log("\n\n");
+        // console.log("handleSignOut Started...");
         // ------------------------------------------------------
         // step 12.01 :: get SignOut data :: await supabase.auth.signOut()
         const { data: signOutData, error: signOutError }
@@ -70,25 +70,27 @@ const LoginBtn = ({ isBgDark = true }) => {
 
         setUser_id(null);
         // We receive "signOutError"...
-        console.log(`signOutError = ${signOutError}`);
+        // console.log(`signOutError = ${signOutError}`);
 
         // step 12.02 :: if signOutError is null ,
         if (signOutError == null) {
             // then, User is Suceesfully Log-out...
             setUser_id(null);
 
-            console.log(`${user_id}`)
+            // console.log(`${user_id}`);
+            revalidateAll();
+            router.refresh();
 
         }
         // ------------------------------------------------------
-        console.log("handleSignOut Ended...");
-        console.log("\n\n");
+        // console.log("handleSignOut Ended...");
+        // console.log("\n\n");
         // ------------------------------------------------------
     }
 
     const handleSession = () => {
         if (user_id == null) {
-            router.replace(`signin`)
+            router.replace(`sign-in`);
         } else {
             handleSignOut();
         }
@@ -101,30 +103,40 @@ const LoginBtn = ({ isBgDark = true }) => {
         <>
 
             <div className="flex gap-6 flex-wrap ">
-                {(user_id == null) ?
-                    <>
-                        <Link href={`/signup`}
-                            className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                            Sign up
-                        </Link>
 
-                    </>
-                    :
-                    <>
-                        <Link href={`/profile`}
-                            className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                            Profile
-                        </Link>
-                    </>
+                {(user_id !== null) && <>
+
+                    <Link href={`/profile`}
+                        className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
+                        Profile 4
+                    </Link>
+                </>
                 }
 
 
-                <button onClick={() => {
-                    handleSession();
-                }}
-                    className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                    {(user_id == null) ? `log in` : `log out`}
-                </button>
+                {(user_id == null && signup == false) &&
+                    <>
+                        <Link href={`/sign-up`}
+                            className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
+                            Sign up 4 
+                        </Link>
+
+                    </>
+                
+                }
+
+
+                {(signin == false) &&
+
+                    <button onClick={() => {
+                        handleSession();
+                    }}
+                        className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
+                        {(user_id == null) ? `Sign in 4` : `Sign out 4`}
+                    </button>
+
+                }
+
             </div>
         </>
     )

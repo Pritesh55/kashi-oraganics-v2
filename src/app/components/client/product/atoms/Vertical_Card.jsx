@@ -26,23 +26,23 @@ const Vertical_Card = ({ curpt }) => {
     // step 13.01 :: create handleSignIn :: async :: Function
     const updateProduct = async (id) => {
         // ----------------------------------------------------
-        console.log("\n\n");
-        console.log("updateProduct Started...\n\n");
+        // console.log("\n\n");
+        // console.log("updateProduct Started...\n\n");
         // ----------------------------------------------------
 
         // ------------------------------------------------------
-        console.log("updateProduct Ended...");
-        console.log("\n\n");
+        // console.log("updateProduct Ended...");
+        // console.log("\n\n");
         // ----------------------------------------------------
     }
 
     // step 13.01 :: create handleSignIn :: async :: Function
     const deleteProduct = async (id) => {
         // ----------------------------------------------------
-        console.log("\n\n");
-        console.log("deleteProduct Started...\n\n");
+        // console.log("\n\n");
+        // console.log("deleteProduct Started...\n\n");
         // ----------------------------------------------------
-        console.log(`id = `, id);
+        // console.log(`id = `, id);
 
 
         const { error: deletePtError } = await supabase
@@ -51,20 +51,20 @@ const Vertical_Card = ({ curpt }) => {
             .eq('id', id);
 
 
-        console.log(`deletePtError = `, deletePtError);
+        // console.log(`deletePtError = `, deletePtError);
 
         if (deletePtError == null) {
             router.refresh();
         }
 
         // ------------------------------------------------------
-        console.log("deleteProduct Ended...");
-        console.log("\n\n");
+        // console.log("deleteProduct Ended...");
+        // console.log("\n\n");
         // ----------------------------------------------------
     }
 
     return (
-        <div key={curpt.id} className="w-full sm:w-[360px]  border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
+        <div key={curpt.id} className="w-full sm:w-auto sm:min-w-[360px] sm:max-w-[60%] border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
 
             <button onClick={() => {
                 updateProduct(id);
@@ -104,7 +104,7 @@ const Vertical_Card = ({ curpt }) => {
 
                 {(curpt.pt_category && curpt.pt_brand) &&
                     <>
-                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-10">
+                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-5">
 
                             {(curpt.pt_category) &&
                                 <>
@@ -135,7 +135,7 @@ const Vertical_Card = ({ curpt }) => {
 
                 {(curpt.pt_description) &&
                     <>
-                        <p className="h-20 overflow-hidden">
+                        <p className="max-h-20 w-[340px] overflow-hidden">
                             {pt_description}
                         </p>
                     </>

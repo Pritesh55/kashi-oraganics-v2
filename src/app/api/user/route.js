@@ -21,7 +21,7 @@ export async function GET(request) {
         = await supabase.auth.getSession();
 
     // We receive "sessionData" and "sessionError"
-    console.log(`sessionData=`, sessionData);
+    // console.log(`sessionData=`, sessionData);
     // "sessionData" is a Object ::
 
     // ------------------------------------------------
@@ -33,15 +33,15 @@ export async function GET(request) {
         // If it is not null, Then User is Logged in....
 
         // ------------------------------------------------
-        console.log(`sessionData.session=`, sessionData.session);
+        // console.log(`sessionData.session=`, sessionData.session);
 
-        console.log(`
-          Now, sessionData.session  is an "Object"... 
-          So, sessionData.session is not "null \n 
-          So, Yes, "sessionData.session" is there..
-          So, by "sessionData.session", We econclude that \n
-          Yes, User is Logged in..`);
-        console.log(`\n\n`);
+        // console.log(`
+        //   Now, sessionData.session  is an "Object"... 
+        //   So, sessionData.session is not "null \n 
+        //   So, Yes, "sessionData.session" is there..
+        //   So, by "sessionData.session", We econclude that \n
+        //   Yes, User is Logged in..`);
+        // console.log(`\n\n`);
         // So, from "session" in "sessionData" ,  
         // We determines that "User is Logged in"
         // ---------------------------------------------------------
@@ -83,18 +83,18 @@ export async function GET(request) {
         message = `User is not Logged in...Please Log in to see User Data...`
 
         // ----------------------------------------------------
-        console.log(`sessionData.session=`, sessionData.session);
-        console.log(`sessionError= ${sessionError}`);
-        console.log(`\n\n`);
+        // console.log(`sessionData.session=`, sessionData.session);
+        // console.log(`sessionError= ${sessionError}`);
+        // console.log(`\n\n`);
 
-        console.log(`
-                Now, sessionData.session is "null"...
-                So, No, There is no "sessionData.session"...
-                So, by "sessionData.session", We econclude that \n
-                No, User is not Logged in...
-                `);
+        // console.log(`
+        //         Now, sessionData.session is "null"...
+        //         So, No, There is no "sessionData.session"...
+        //         So, by "sessionData.session", We econclude that \n
+        //         No, User is not Logged in...
+        //         `);
 
-        console.log(`\n\n`);
+        // console.log(`\n\n`);
         // ----------------------------------------------------
     }
 

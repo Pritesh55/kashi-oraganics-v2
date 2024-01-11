@@ -1,0 +1,28 @@
+01 :: Home Page :: http://localhost:3000/ :: src\app\page.js
+# -----------------------------------------
+
+Buttons :: admin 1
+=> /admin
+------------------
+Buttons :: Sign up 4, Sign in 4 
+=> /sign-up
+=> /sign-in
+
+Or ::
+------
+Buttons :: profile 4, signout 4
+=> /profile
+=> /auth/signout => /
+
+# --------------------------------------------------
+
+02 :: sign-up Page :: /sign-up :: src\app\page.js
+
+Buttons :: home 1 , admin 1 ,signin 4
+=> /
+=> /admin
+=> /sign-in
+------------------
+
+Buttons :: signup
+=> /auth/signup => /

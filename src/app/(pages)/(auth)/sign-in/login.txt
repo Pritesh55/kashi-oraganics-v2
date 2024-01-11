@@ -399,14 +399,14 @@ export default function Login() {
             email: email,
             password: password,
             options: {
-                emailRedirectTo: `${location.origin}/auth/callback`,
-                // ${location.origin} = Root path
+                emailRedirectTo: `${process.env.REDIRECT_URL}/auth/callback`,
+                // ${process.env.REDIRECT_URL} = Root path
             },
         });
 
         // --------------------------------------------
         // flow goes to :: /auth/callback
-        console.log(`flow goes to :: ${location.origin}/auth/callback`);
+        console.log(`flow goes to :: ${process.env.REDIRECT_URL}/auth/callback`);
         console.log(`flow is back to this "Login page"...`);
         // --------------------------------------------
 

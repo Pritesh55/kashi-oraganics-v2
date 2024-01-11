@@ -4,7 +4,7 @@ import React from 'react'
 const Vertical_Card = ({ curpt }) => {
     
     return (
-        <div key={curpt.id} className="w-full sm:w-[360px]  border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
+        <div key={curpt.id} className="w-full sm:w-auto sm:min-w-[360px] sm:max-w-[60%] border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
 
             <button onClick={() => {// updateProduct(id);
             }} className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white">
@@ -42,7 +42,7 @@ const Vertical_Card = ({ curpt }) => {
 
                 {(curpt.pt_category && curpt.pt_brand) &&
                     <>
-                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-10">
+                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-5">
 
                             {(curpt.pt_category) &&
                                 <>
@@ -73,7 +73,7 @@ const Vertical_Card = ({ curpt }) => {
 
                 {(curpt.pt_description) &&
                     <>
-                        <p className="h-20 overflow-hidden">
+                        <p className="max-h-20 w-[340px] overflow-hidden">
                             {curpt.pt_description}
                         </p>
                     </>

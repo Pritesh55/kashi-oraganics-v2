@@ -11,7 +11,7 @@ import supabase from "@/app/components/supabase/sbClient";
 // Delete product :: step 01.04.02 :: 
 // export const revalidate = 1;
 
-export async function PUT(request) {
+export async function GET(request) {
 
     var success = false;
     var message = '';

@@ -38,3 +38,22 @@ pre {
 .btn-tp:hover {
   box-shadow: rgb(255, 251, 228) 0px 30px 60px -12px inset, rgb(255, 242, 217) 0px 18px 36px -18px inset;
 }
+
+
+/* For Chrome, Safari, and Opera */
+*::-webkit-scrollbar {
+  /* display: none; */
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: orange;
+  /* color of the scroll thumb */
+  border-radius: 8px;
+  /* roundness of the scroll thumb */
+  border: 3px solid white;
+}

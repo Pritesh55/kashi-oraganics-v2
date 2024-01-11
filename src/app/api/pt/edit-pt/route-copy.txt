@@ -1,0 +1,109 @@
+import supabase from "@/app/components/supabase/sbClient";
+// -----------------------------------------
+import { NextResponse } from "next/server";
+import { revalidatePath } from 'next/cache'
+
+
+export async function POST(request) {
+
+    console.log('POST request started')
+
+    // recive product details :: from "post request" :: request.JSON
+    var { pt_id, pt_title, pt_description, pt_category, pt_brand, pt_photo_thumbnail, pt_images, pt_price, pt_discount_percent, pt_rating, pt_stock }
+        = await request.json();
+
+    // converts to String ::
+    var pt_title_string = `${pt_title}`;
+    var pt_description_string = `${pt_description}`;
+    var pt_brand_string = `${pt_brand}`;
+    var pt_category_string = `${pt_category}`;
+    var pt_images_string = `${pt_images}`;
+    var pt_photo_thumbnail_string = `${pt_photo_thumbnail}`;
+
+    pt_id = Number(pt_id);
+    var price_Num;
+    var discount_percent_Num;
+    var pt_rating_Num;
+    var pt_stock_Num;
+
+    // converts to Integer ::
+    if (pt_price.length !== 0) {
+        price_Num = Number(pt_price);
+
+    }
+    if (pt_discount_percent.length !== 0) {
+        discount_percent_Num = Number(pt_discount_percent);
+    }
+    if (pt_rating.length !== 0) {
+        pt_rating_Num = Number(pt_rating);
+    }
+    if (pt_stock.length !== 0) {
+        pt_stock_Num = Number(pt_stock);
+    }
+
+
+    // define create product data Object ::
+    var onePtData = {
+        pt_title: pt_title_string,
+        pt_description: pt_description_string,
+        // ---------------------------
+        pt_price: price_Num,
+        pt_discount_percent: discount_percent_Num,
+        pt_rating: pt_rating_Num,
+        pt_stock: pt_stock_Num,
+        // ---------------------------
+        pt_brand: pt_brand_string,
+        pt_category: pt_category_string,
+        pt_images: pt_images_string,
+        pt_photo_thumbnail: pt_photo_thumbnail_string,
+    }
+
+    console.log(`onePtData = `, onePtData)
+
+    // pass data Object to :: insert() :: Supabase
+    // const { data: insertProductData, error: insertProductError } = await supabase
+    //     .from('products')
+    //     .insert(
+    //         onePtData
+    //     )
+    //     .select();
+
+
+
+    const { data: updatePtData, error: updatePtError } = await supabase
+        .from('products')
+        .update(onePtData)
+        .eq('id', pt_id)
+        .select();
+
+    console.log(`updatePtData = `, updatePtData)
+    console.log(`updatePtError = `, updatePtError)
+
+
+    // List all products :: to check our inserted products..
+    let { data: all_products, error: all_products_error } = await supabase
+        .from('products')
+        .select('*');
+
+    var message = (updatePtData !== null) ?
+        `Yes, Product successfuly Updated to "products" table..` :
+        `No, Product is not Updated to "products" table..`
+
+    var success = (updatePtData !== null) ? true : false;
+
+    return NextResponse.json({
+        success,
+        message,
+        request_name: 'POST',
+        // 
+        onePtData,
+        // ------------------
+        updatePtData,
+        updatePtError,
+        // ------------------
+        all_products,
+        all_products_error,
+    });
+
+}
+
