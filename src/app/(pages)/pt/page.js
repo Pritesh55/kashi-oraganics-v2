@@ -69,7 +69,7 @@ const Product = async ({ is_admin = false }) => {
     return (
         <section className="bg-white px-2">
 
-            <div className="xl:container px-5 py-10 mx-auto flex flex-col gap-y-10">
+            <div className="xl:container px-5 py-5 mx-auto flex flex-col gap-y-10">
 
                 {/* // product :: step 01.04 :: 
                 :: If there are products from server :: (isProductsFS), 

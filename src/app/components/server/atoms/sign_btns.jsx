@@ -12,13 +12,13 @@ const Sign_btns = ({
 
     return (
         <>
-            <div className="flex gap-6 flex-wrap ">
+            <div className="flex gap-x-3 md:gap-x-6 gap-y-3 flex-wrap ">
 
                 {(user_id !== undefined) && <>
 
                     <Link href={`/profile`}
                         className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                        Profile 4
+                        Profile 
                     </Link>
                 </>
                 }
@@ -27,7 +27,7 @@ const Sign_btns = ({
                     <>
                         <Link href={`/sign-up`}
                             className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                            Sign up 4
+                            Sign up 
                         </Link>
 
                     </>
@@ -38,7 +38,7 @@ const Sign_btns = ({
 
                     <Link href={`/sign-in`}
                         className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                        {`Sign in 4`}
+                        {`Sign in`}
                     </Link>
 
                 }
@@ -48,7 +48,7 @@ const Sign_btns = ({
                     <form action="/auth/signout" method="post" className='text-black'>
                         <button formAction="/auth/signout"
                             className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
-                            {`Sign out 4`}
+                            {`Sign out`}
                         </button>
                     </form>
 

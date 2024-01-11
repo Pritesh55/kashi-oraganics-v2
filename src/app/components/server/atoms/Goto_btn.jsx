@@ -10,7 +10,7 @@ const Goto_btn = ({ name = ``, goto, formAction }) => {
 
             {(goto) && <>
                 <Link href={`${goto}`} className=" btn-tp bg-white text-black   border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider capitalize" >
-                    {name} 1
+                    {name}
                 </Link>
             </>
 
@@ -22,7 +22,7 @@ const Goto_btn = ({ name = ``, goto, formAction }) => {
                 (!goto && !formAction) &&
                 <>
                     <button className=" btn-tp bg-white text-black   border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider capitalize" >
-                        {name} 2
+                        {name}
                     </button>
 
 
@@ -34,7 +34,7 @@ const Goto_btn = ({ name = ``, goto, formAction }) => {
                 (!goto && formAction) &&
                 <>
                     <button href={`${goto}`} formAction="/auth/signout" className=" btn-tp bg-white text-black   border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider capitalize" >
-                        {name} 3
+                        {name}
                     </button>
 
 

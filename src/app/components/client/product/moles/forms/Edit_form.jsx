@@ -253,7 +253,7 @@ const Edit_form = ({ revalidateAll }) => {
             <div className=" bg-white rounded-lg p-8 flex flex-col w-full gap-8 min-h-[384px] border-2 border-solid border-orange-400 relative">
 
 
-                <div className="flex justify-between gap-x-6 items-center">
+                <div className="flex justify-between gap-x-6 gap-y-3 items-center flex-wrap">
                     <Form_heading name={`Edit product`}></Form_heading>
 
                     <button

@@ -10,7 +10,7 @@ const signup = () => {
             <div className="bg-white text-black min-h-screen">
 
                 {/* step 11.16 :: Ui screen for Sign up Screen :: */}
-                <div className="px-5 py-3 flex justify-between items-center gap-3">
+                <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
                     <div className="text-black bg-white rounded-lg">
                         <Goto_btn goto='/' name='Home'></Goto_btn>
                     </div>

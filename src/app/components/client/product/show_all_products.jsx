@@ -148,7 +148,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
 
         <>
 
-            <div className="flex flex-wrap gap-x-4 gap-y-10 justify-evenly items-start">
+            <div className="flex flex-wrap gap-x-4 gap-y-6 justify-evenly items-start">
                 {
 
                     (isProducts && products?.length > 0) &&
@@ -162,7 +162,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
                                 <>
 
                                     <div key={curpt.id}
-                                        className="w-full sm:w-auto sm:min-w-[360px] sm:max-w-[60%] border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
+                                        className="w-full md:w-[48%] lg:w-auto lg:min-w-[360px] lg:max-w-[60%] border-2 border-solid border-orange-400 rounded-lg gap-y-4 relative">
 
                                         {
                                             (is_admin == true) && <>
@@ -218,7 +218,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
 
                                                         {(curpt.pt_category) &&
                                                             <>
-                                                                <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp"
+                                                                <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all"
                                                                 >
                                                                     {curpt.pt_category}
                                                                 </h3>
@@ -226,7 +226,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
                                                         }
                                                         {(curpt.pt_brand) &&
                                                             <>
-                                                                <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp">
+                                                                <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all">
                                                                     {curpt.pt_brand}
                                                                 </h3>
                                                             </>
@@ -237,7 +237,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
 
                                             {(curpt.pt_title) &&
                                                 <>
-                                                    <h2 className="text-xl ">
+                                                    <h2 className="text-xl break-all">
                                                         {curpt.pt_title}
                                                     </h2>
                                                 </>
@@ -245,18 +245,19 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
 
                                             {(curpt.pt_description) &&
                                                 <>
-                                                    <p className="max-h-20 sm:w-[340px] overflow-hidden">
+                                                    <p className="max-h-20 sm:w-[340px] overflow-hidden break-all">
                                                         {curpt.pt_description}
                                                     </p>
                                                 </>
                                             }
 
-                                            <div className="w-full flex justify-between items-center gap-x-8  ">
+                                            <div className="w-full flex justify-between items-center gap-x-8 gap-y-8 flex-wrap">
 
-                                                <div className="">
-                                                    <span className="text-lg font-medium px-4 py-2 border-2 border-solid border-orange-400 rounded-md btn-tp" >
-                                                        ₹ {curpt.pt_price}
+                                                <div className="text-lg font-medium px-4 py-2 border-2 border-solid border-orange-400 rounded-md btn-tp break-all">
+                                                    <span className="" >
+                                                        {`₹ ${curpt.pt_price}`}
                                                     </span>
+                                                   
                                                 </div>
 
 

@@ -120,7 +120,7 @@ const Profile_page = async () => {
 
   return (
     <main className="bg-white min-h-screen">
-      <div className="px-5 py-3 flex justify-between items-center gap-3">
+      <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
         <div className="text-black bg-white rounded-lg flex flex-wrap gap-x-6 ">
 

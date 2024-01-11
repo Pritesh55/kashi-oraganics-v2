@@ -163,7 +163,7 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
 
             <div className=" bg-white text-black rounded-lg px-5 py-8 flex flex-col w-full gap-8 relative">
 
-                <div className="flex justify-between gap-x-6 items-center">
+                <div className="flex justify-between gap-x-6 gap-y-3 items-center flex-wrap">
                     <Form_heading name={`Edit Your Profile`}></Form_heading>
 
                     <button

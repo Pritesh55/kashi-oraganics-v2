@@ -187,10 +187,10 @@ const Cre_pt_form = ({ revalidateAll }) => {
             }
 
             {/* Sign-up or Sign-in Box */}
-            <div className=" bg-white p-8 flex flex-col w-full gap-8 min-h-[384px] relative">
+            <div className=" bg-white p-8 flex flex-col flex-wrap w-full gap-8 min-h-[384px] relative">
 
 
-                <div className="flex justify-between gap-x-6 items-center">
+                <div className="flex justify-between gap-x-6 gap-y-3  items-center flex-wrap">
                     <Form_heading name={`Create product`}></Form_heading>
 
                     <button

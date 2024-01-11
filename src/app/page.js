@@ -118,7 +118,7 @@ export default async function Home() {
 
       <main className="flex flex-col bg-white min-h-screen text-black">
 
-        <div className="px-5 py-3 flex justify-between items-center gap-3">
+        <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
           <div className="text-black bg-white rounded-lg">
 
