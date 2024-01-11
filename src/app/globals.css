@@ -28,6 +28,10 @@ body {
   color: black;
 }
 
+img::selection {
+  background-color: transparent;
+}
+
 
 .label-s1 {
   @apply text-base 2xl:text-lg font-normal leading-relaxed tracking-wide capitalize text-black;
