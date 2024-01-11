@@ -67,7 +67,7 @@ const Product = async ({ is_admin = false }) => {
     // console.log(`is_admin=`, is_admin)
 
     return (
-        <section className="bg-white min-h-screen px-2">
+        <section className="bg-white px-2">
 
             <div className="xl:container px-5 py-10 mx-auto flex flex-col gap-y-10">
 
@@ -82,11 +82,10 @@ const Product = async ({ is_admin = false }) => {
                         revalidateAll={revalidateAll}
                         is_admin={is_admin}
                     ></Show_all_products>
-
-                    // product :: step 01.05.01 :: props :: {revalidateAll}
-                    //  ::productsFS :: products from server (FS) = {products}
-                    // :: revalidateAll :: props for "client component" to do "server action"...
                 }
+                {/* // product :: step 01.05.01 :: props :: {revalidateAll}
+                    //  ::productsFS :: products from server (FS) = {products}
+                    // :: revalidateAll :: props for "client component" to do "server action"... */}
 
             </div>
         </section>

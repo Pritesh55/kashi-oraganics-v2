@@ -69,10 +69,10 @@ const signup = () => {
 
                         <div className="flex gap-3 justify-between">
 
-                            <button formAction="/auth/signup" className="w-1/2 text-black font-medium   focus:outline-none py-3 text-lg min-w-max border-0 border-solid border-orange-400 rounded-lg  bg-yellow-300 ">
+                            <button formAction="/auth/signup" className="w-1/2 text-black font-medium   focus:outline-none py-3 text-lg border-0 border-solid border-orange-400 rounded-lg  bg-yellow-300 ">
                                 Sign up
                             </button>
-                            
+
                         </div>
                     </form>
                 </div>
