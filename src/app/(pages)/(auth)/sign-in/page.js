@@ -75,7 +75,6 @@ const Login = ({ revalidateAll }) => {
                         </div>
 
                         <div className="flex gap-3 justify-between  ">
-
                             <button formAction="/auth/signin" className="w-1/2 text-black  focus:outline-none py-3 text-lg font-medium   min-w-max border-0 border-solid border-orange-400 rounded-lg  bg-yellow-300 ">
                                 Sign in
                             </button>
