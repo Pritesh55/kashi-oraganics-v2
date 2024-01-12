@@ -8,6 +8,7 @@ export async function revalidateAll() {
 
     revalidatePath('/');
     revalidatePath('/admin');
-    console.log('rELVALIDATING.....tHANK YOU...');
+    revalidatePath('/pt');
+    // console.log('rELVALIDATING.....tHANK YOU...');
 }
 

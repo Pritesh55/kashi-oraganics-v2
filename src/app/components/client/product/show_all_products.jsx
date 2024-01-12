@@ -17,7 +17,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
     const router = useRouter();
 
     const pathname = usePathname();
-    console.log(`pathname  =`, pathname)
+    // console.log(`pathname  =`, pathname)
 
     const supabase = createClientComponentClient();
 
@@ -135,7 +135,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
                                         {/* Image  */}
                                         <Image
                                             // -----------------------
-                                            src={(curpt.pt_photo_thumbnail) ? `${curpt.pt_photo_thumbnail}` : `https://scontent.famd1-2.fna.fbcdn.net/v/t39.30808-6/416842063_679619837687731_2693038348619092119_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=3635dc&_nc_ohc=L56bV-0G58AAX-QdVLB&_nc_ht=scontent.famd1-2.fna&oh=00_AfCq4-8D4bwWTgasZYan-urc8-v0JIC1OKitMzzwlEpxtw&oe=659B81CD`}
+                                            src={(curpt.pt_photo_thumbnail) ? `${curpt.pt_photo_thumbnail}` : `https://www.sose.in/assets/store%20locator%20main%20banner-h9yO4WZa.jpg`}
 
                                             // -----------------------
                                             alt="ecommerce"
@@ -201,7 +201,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
                                             </div>
 
 
-                                            <div className="border-2 border-solid border-orange-300 p-4 rounded-full relative bg-yellow-300 cursor-pointer">
+                                            <div className="border-2 border-solid border-orange-300 px-3 py-3 rounded-full relative bg-yellow-300 cursor-pointer">
                                                 <Image src='/plus-icon.svg' alt='add-to-cart'
                                                     width={24} height={24} sizes=''></Image>
                                             </div>

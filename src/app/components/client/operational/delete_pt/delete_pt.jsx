@@ -18,7 +18,7 @@ const Delete_pt = ({ pt_id, revalidateAll, prev_url }) => {
 
             await axios.put('/api/pt/delete-pt', { pt_id }).then(function (response) {
                 // -------------------------
-                console.log(`delete Product Response`, response.data);
+                // console.log(`delete Product Response`, response.data);
 
                 set_first_time(true);
 

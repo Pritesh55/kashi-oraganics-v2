@@ -21,9 +21,9 @@ const delete_pt = async () => {
     }
 
 
-    console.log(`previous url = `, prev_url);
-    console.log(`cur_url =`, cur_url);
-    console.log(pt_id);
+    // console.log(`previous url = `, prev_url);
+    // console.log(`cur_url =`, cur_url);
+    // console.log(pt_id);
 
     return (
         <>

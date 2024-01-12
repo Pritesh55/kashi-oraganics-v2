@@ -11,7 +11,7 @@ export async function PUT(request) {
     // console.log('POST request started')
     // recieve pt_data
     const pt_data = await request.json();
-    console.log(`pt_data = `, pt_data)
+    // console.log(`pt_data = `, pt_data);
 
     const { pt_id } = pt_data;
 
@@ -26,7 +26,7 @@ export async function PUT(request) {
         revalidatePath('/');
     }
 
-    console.log(`deletePtError = `, deletePtError)
+    // console.log(`deletePtError = `, deletePtError);
     revalidateAll();
 
     var message = (deletePtError == null) ?
