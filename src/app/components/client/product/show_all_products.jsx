@@ -216,8 +216,6 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false }) => {
                         }
                         )}
 
-
-
                     </>
 
                 }
