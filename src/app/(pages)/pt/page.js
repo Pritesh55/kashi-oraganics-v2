@@ -1,16 +1,5 @@
 import React from 'react'
 
-// product :: step 01.01 :: isProductsFS :: (is products from server ??) => false
-
-// product :: step 01.02.01 :: supabase :: used to get (products) from supabse...
-// product :: step 01.02.02 :: supabase :: import supabase..
-
-// product :: step 01.03 :: if (products) then => isProductsFS :: true
-// product :: step 01.04 :: if (products) then => show_All_products compomemt
-
-// product :: step 01.05.01 :: {revalidateAll} used as props
-// product :: step 01.05.02 :: {revalidateAll} import
-
 // product :: step 01.02.02 :: import "supabase" 
 import supabase from '@/app/components/supabase/sbClient';
 // :: for the use in "server components"
@@ -93,3 +82,17 @@ const Product = async ({ is_admin = false }) => {
 }
 
 export default Product
+
+
+
+// product :: step 01.01 :: isProductsFS :: (is products from server ??) => false
+
+// product :: step 01.02.01 :: supabase :: used to get (products) from supabse...
+// product :: step 01.02.02 :: supabase :: import supabase..
+
+// product :: step 01.03 :: if (products) then => isProductsFS :: true
+// product :: step 01.04 :: if (products) then => show_All_products compomemt
+
+// product :: step 01.05.01 :: {revalidateAll} used as props
+// product :: step 01.05.02 :: {revalidateAll} import
+

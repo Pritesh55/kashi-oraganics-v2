@@ -120,7 +120,7 @@ export default async function Home() {
 
         <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
-          <div className="text-black bg-white rounded-lg">
+          <div className="text-black bg-white rounded-lg flex flex-wrap">
 
             {(is_admin == true) && <>
               <Goto_btn goto='/admin' name='admin'></Goto_btn>

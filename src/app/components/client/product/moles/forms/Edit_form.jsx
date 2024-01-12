@@ -1,24 +1,26 @@
 'use client'
 
-import axios from 'axios';
-import { usePathname, useRouter } from 'next/navigation';
-
 import React, { useEffect, useState } from 'react'
+// ----------------------------
+import { usePathname, useRouter } from 'next/navigation';
+import { getLastWord } from '@/functions/urlFunctions';
+// ----------------------------
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import axios from 'axios';
+// -----------------------------
 import Form_heading from '../../atoms/Form_heading';
 import Form_field_text from '../../Form_field_text';
 import Form_field_text_area from '../../Form_field_text_area';
-import { getLastWord } from '@/functions/urlFunctions';
-import { SupabaseClient } from '@supabase/supabase-js';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+// -----------------------------
+import Goto_btn from '@/app/components/server/atoms/Goto_btn';
+import Sign_btns from '@/app/components/server/atoms/sign_btns';
 
 const Edit_form = ({ revalidateAll }) => {
 
+    const router = useRouter();
     const pathname = usePathname();
 
     const supabase = createClientComponentClient()
-
-    const router = useRouter();
-
 
     // Define State varibale :: step 01 ::
     // define State_varibale_Handler :: step 02 ::
@@ -101,6 +103,9 @@ const Edit_form = ({ revalidateAll }) => {
     const [isNewProductEdited, setIsNewProductEdited] = useState(false);
     const [isptEditedMessage, setIsptEditedMessage] = useState('');
 
+
+    const [new_pt_editing, set_new_pt_editing] = useState(false);
+
     useEffect(() => {
 
         const EditProduct = async () => {
@@ -111,6 +116,7 @@ const Edit_form = ({ revalidateAll }) => {
 
             var pt_id = getLastWord(`${pathname}`);
             // console.log(`Your Product's id =`, pt_id);
+
 
             const { data: productsData, error: productsError } = await supabase
                 .from('products')
@@ -162,6 +168,8 @@ const Edit_form = ({ revalidateAll }) => {
                         pt_stock: `${pt_stock}`
                     }
 
+                    set_new_pt_editing(true);
+
                     await axios.put('/api/pt/edit-pt', {
                         pt_object, update_pt_object
                     },
@@ -170,7 +178,7 @@ const Edit_form = ({ revalidateAll }) => {
                         // console.log(`Edit Product Response`, response.data);
 
                         if (response.data.success == true) {
-                            revalidateAll();
+
 
                             // setIsNewProductEdited(true);
                             // setIsptEditedMessage('Thank you, You Edited a New Product...');
@@ -187,7 +195,9 @@ const Edit_form = ({ revalidateAll }) => {
                             // setIsNewProductEdited(false);
                             // // -----------------------
 
-                            router.back();
+                            revalidateAll();
+                            router.push('/admin');
+                            router.refresh();
                             // -----------------------
 
                         } else {
@@ -238,6 +248,19 @@ const Edit_form = ({ revalidateAll }) => {
     }, [userChange, edit_pt_btn, fillInitialValues])
 
 
+    if (new_pt_editing == true) {
+        return (
+            <>
+                <div className="bg-white min-h-screen flex justify-center items-center w-full">
+                    <span className="text-2xl break-word text-black">
+                        Your Product is Editing Now...
+                    </span>
+                </div>
+            </>
+
+        )
+    }
+
     return (
         <>
             {
@@ -249,8 +272,29 @@ const Edit_form = ({ revalidateAll }) => {
 
             }
 
+            <div className="w-full text-black bg-white py-3 px-5 z-[9999]">
+                <div className="w-full flex flex-wrap justify-between gap-3">
+
+                    <div className="flex gap-x-3 md:gap-x-6 gap-y-3 flex-wrap ">
+
+                        <Goto_btn name={`Home`} goto={`/`}></Goto_btn>
+                        <Goto_btn name={`Admin`} goto={`/admin`}></Goto_btn>
+
+                    </div>
+
+                    <div className="flex gap-x-3 md:gap-x-6 gap-y-3 flex-wrap ">
+                        <Goto_btn revalidateAll={revalidateAll}
+                            name={`Profile`}
+                            goto={`/profile`}></Goto_btn>
+
+                        <Sign_btns signout={true} ></Sign_btns>
+                    </div>
+
+                </div>
+            </div>
+
             {/* Sign-up or Sign-in Box */}
-            <div className=" bg-white rounded-lg p-8 flex flex-col w-full gap-8 min-h-[384px] border-2 border-solid border-orange-400 relative">
+            <div className="bg-white text-black px-5 py-8 flex flex-col w-full gap-8 relative">
 
 
                 <div className="flex justify-between gap-x-6 gap-y-3 items-center flex-wrap">
@@ -283,19 +327,19 @@ const Edit_form = ({ revalidateAll }) => {
 
 
                         <Form_field_text
-                            state_var={pt_brand}
-                            handler_name={pt_brand_Handler}
-                            label_name={`Brand Name`}
-                            placeholder_name={`Brand Name`}
-                        />
-
-                        <Form_field_text
                             state_var={pt_category}
                             handler_name={pt_category_Handler}
                             label_name={`Category Name`}
                             placeholder_name={`Category Name`}
                         />
 
+
+                        <Form_field_text
+                            state_var={pt_brand}
+                            handler_name={pt_brand_Handler}
+                            label_name={`Brand Name`}
+                            placeholder_name={`Brand Name`}
+                        />
 
 
                         <Form_field_text

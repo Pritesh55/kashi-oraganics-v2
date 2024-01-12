@@ -67,6 +67,8 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
 
     const [isNewProductCreated, setIsNewProductCreated] = useState(false);
     const [isptCreatedMessage, setIsptCreatedMessage] = useState('');
+
+    const [profile_updating, set_profile_updating] = useState(false);
     // step 04
     useEffect(() => {
         // console.log(user_profile)
@@ -97,6 +99,9 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
 
             if (update_profile_btn == true) {
                 // object 01:: userProfile , 02:: We have to make...
+                set_profile_updating(true);
+
+
                 var update_userProfile = {
                     // ...user_profile,
                     first_name: `${first_name}`,
@@ -105,6 +110,7 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
                     whatsapp_number: `${whatsapp_number}`,
                     address: `${address}`
                 }
+               
 
                 await axios.put('/api/user/edit-profile', { update_userProfile, user_profile })
                     .then((response) => {
@@ -136,6 +142,7 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
             // console.log("\n\n");
             // ------------------------------------------------------
             set_update_profile_btn(false);
+            set_profile_updating(false);
             // setUserChange(false);
 
         }
@@ -148,6 +155,21 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
         // step 05 :: dependency variable...
     }, [update_profile_btn, fillInitialValues])
 
+
+    
+
+    if (profile_updating == true) {
+        return (
+            <>
+                <div className="bg-white min-h-screen flex justify-center items-center w-full">
+                    <span className="text-2xl break-word text-black">
+                        Your Profile is Updating Now...
+                    </span>
+                </div>
+            </>
+
+        )
+    }
 
     return (
         <>
