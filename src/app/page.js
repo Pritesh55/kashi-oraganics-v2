@@ -7,6 +7,7 @@ import Sign_btns from '@/app/components/server/atoms/sign_btns'
 // ----------------------------------
 import Product from './(pages)/pt/page';
 
+
 export default async function Home() {
 
   const cookieStore = cookies();
@@ -83,7 +84,7 @@ export default async function Home() {
   // ]
 
   var is_admin = false;
-
+  var cart = [];
   // Check if user is admin ??
   if (profilesData?.length > 0) {
 
@@ -104,6 +105,7 @@ export default async function Home() {
 
 
     is_admin = user_profile.is_admin;
+    cart = user_profile.cart;
 
   }
 
@@ -120,7 +122,7 @@ export default async function Home() {
 
         <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
-          <div className="text-black bg-white rounded-lg flex flex-wrap">
+          <div className="text-black rounded-lg flex flex-wrap">
 
             {(is_admin == true) && <>
               <Goto_btn goto='/admin' name='admin'></Goto_btn>
@@ -129,7 +131,7 @@ export default async function Home() {
           </div>
 
 
-          <div className="text-black bg-white rounded-lg">
+          <div className="text-black rounded-lg">
             {(user) ? <>
               <Sign_btns profile={true} signout={true}
                 user_profile={user_profile} user_id={user_id}></Sign_btns>
@@ -141,7 +143,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <Product is_admin={is_admin} ></Product>
+        <Product is_admin={is_admin} cart={cart} user_id={user_id}></Product>
       </main>
 
     </>

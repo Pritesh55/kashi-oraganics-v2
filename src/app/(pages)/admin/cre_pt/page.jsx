@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Cre_pt_form from '@/app/components/client/product/cre_pt_form'
+import Cre_pt_form from '@/app/components/client/product/moles/forms/cre_pt_form'
 import { revalidateAll } from '@/app/actions'
 
 const Cre_pt_page = () => {

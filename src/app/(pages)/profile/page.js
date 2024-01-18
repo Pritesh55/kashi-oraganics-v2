@@ -113,16 +113,19 @@ const Profile_page = async () => {
 
   // console.log(`user=`, user);
   // console.log(`profilesData=`, profilesData);
-  // console.log(`user_profile=`, user_profile);
+  // console.log(`user_profile=`, user_profile?.cart);
+  // console.log(`user_profile=`, user_profile?.cart?.length);
   // console.log(`is_admin = `, is_admin);
 
   // --------------------------------------
+
+
 
   return (
     <main className="bg-white min-h-screen">
       <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
-        <div className="text-black bg-white rounded-lg flex flex-wrap gap-x-6 ">
+        <div className="text-black rounded-lg flex flex-wrap gap-x-6 ">
 
           <Goto_btn goto='/' name='Home'></Goto_btn>
 
@@ -133,7 +136,7 @@ const Profile_page = async () => {
         </div>
 
 
-        <div className="text-black bg-white rounded-lg">
+        <div className="text-black rounded-lg">
           {(user) ? <>
             <Sign_btns profile={true} signout={true}
               user_profile={user_profile} user_id={user_id}></Sign_btns>
@@ -146,8 +149,11 @@ const Profile_page = async () => {
 
       </div>
 
+      {(user) &&
+        <Profile_form user_profile={user_profile} revalidateAll={revalidateAll}></Profile_form>
 
-      <Profile_form user_profile={user_profile} revalidateAll={revalidateAll}></Profile_form>
+      }
+
 
     </main>
   )

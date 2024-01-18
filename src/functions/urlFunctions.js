@@ -10,7 +10,7 @@ export function get_id_from_url(cur_url) {
     return id
 }
 
-export function wait(ms) {
+export async function wait(ms) {
     var start = new Date().getTime();
     var end = start;
     while (end < start + ms) {

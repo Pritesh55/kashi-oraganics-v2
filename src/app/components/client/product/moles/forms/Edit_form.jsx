@@ -8,9 +8,9 @@ import { getLastWord } from '@/functions/urlFunctions';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import axios from 'axios';
 // -----------------------------
-import Form_heading from '../../atoms/Form_heading';
-import Form_field_text from '../../Form_field_text';
-import Form_field_text_area from '../../Form_field_text_area';
+import Form_heading from '../../atoms/forms/Form_heading';
+import Form_field_text from '../../atoms/forms/Form_field_text';
+import Form_field_text_area from '../../atoms/forms/Form_field_text_area';
 // -----------------------------
 import Goto_btn from '@/app/components/server/atoms/Goto_btn';
 import Sign_btns from '@/app/components/server/atoms/sign_btns';
@@ -202,6 +202,7 @@ const Edit_form = ({ revalidateAll }) => {
 
                         } else {
                             setIsNewProductEdited(true);
+                            set_new_pt_editing(false);
 
                             setIsptEditedMessage('Oh, There is an Error..., Product is not Edited..');
 
@@ -216,6 +217,7 @@ const Edit_form = ({ revalidateAll }) => {
                             wait(3);
 
                             setIsNewProductEdited(false);
+
                         }
                         // -------------------------
                     }).catch(function (error) {

@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Form_heading from '../../atoms/Form_heading';
-import Form_field_text from '../../Form_field_text';
-import Form_field_text_area from '../../Form_field_text_area';
-import Form_field_number from '../../Form_field_number';
+import Form_heading from '../../atoms/forms/Form_heading';
+import Form_field_text from '../../atoms/forms/Form_field_text';
+import Form_field_text_area from '../../atoms/forms/Form_field_text_area';
+import Form_field_number from '../../atoms/forms/Form_field_number';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
@@ -72,7 +72,7 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
     // step 04
     useEffect(() => {
         // console.log(user_profile)
-   
+
 
         const UpdateProfile = async () => {
             // ------------------------------------------------------
@@ -108,9 +108,10 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
                     last_name: `${last_name}`,
                     mobile_number: `${mobile_number}`,
                     whatsapp_number: `${whatsapp_number}`,
-                    address: `${address}`
+                    address: `${address}`,
+                    cart: []
                 }
-               
+
 
                 await axios.put('/api/user/edit-profile', { update_userProfile, user_profile })
                     .then((response) => {
@@ -118,9 +119,9 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
                         // console.log(`Update profile Response`, response.data);
 
                         if (response.data.success == true) {
-         
+
                             revalidateAll();
-                       
+
                             // -----------------------
 
                             // router.back();
@@ -128,11 +129,11 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
                             // console.log('Thank you.., your Profile is updated..');
 
                         } else {
-                            // console.log('Oh, There is an Error..., Profile is not Edited..');
+                            console.log('Oh, There is an Error..., Profile is not Edited..', response.data);
                         }
                         // -------------------------
                     }).catch((error) => {
-                        // console.log(`Edit Product response Error`, error);
+                        console.log(`Edit Product response Error`, error);
                     });
 
             }
@@ -156,7 +157,7 @@ const Profile_form = ({ user_profile, revalidateAll }) => {
     }, [update_profile_btn, fillInitialValues])
 
 
-    
+
 
     if (profile_updating == true) {
         return (

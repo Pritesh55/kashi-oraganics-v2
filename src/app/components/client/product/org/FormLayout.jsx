@@ -1,7 +1,7 @@
 import Form_Submit_top_btn from '@/app/components/design-inspire/Form_Submit_top_btn'
 
 import React from 'react'
-import Form_heading from '../atoms/Form_heading';
+import Form_heading from '../atoms/forms/Form_heading';
 
 const FormLayout = () => {
     return (

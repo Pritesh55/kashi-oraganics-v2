@@ -1,0 +1,65 @@
+-----------------------------------------------------
+useMemo in React in Hindi | Understand useMemo Hook in React.js Completely #2022
+https://www.youtube.com/watch?v=P_YwL0B8k7k
+Yoshita Jain
+-----------------------------------------------------
+React Memo
+https://www.codewithharry.com/tutorial/react-memo/
+By default React re-renders components again and again. Using memo will stop that if props have not changed. 
+
+-------------------------------------------------------
+
+How to Prevent Unwanted Re-Rendering of child Component in ReactJs | Component Optimization in Hindi
+https://www.youtube.com/watch?v=_lV_UP25YEs
+KAPIL GUPTA
+
+
+------------------------------------------------
+
+https://www.developerway.com/posts/react-re-renders-guide#part6
+
+https://www.developerway.com/assets/react-re-renders-guide/part6-lists-antipattern.png
+
+
+
+
+---------------------------------------------------------------------------------
+map rerender :: 2 times :: 2nd time - after finishing one loop...
+addto cart :: 2 times ::  back to back :: for each products
+
+
+    show_all_products.jsx:239
+    --------------------------
+    rerender map 216
+    rerender map 217
+    rerender map 218
+    rerender map 219
+    rerender map 221
+
+    rerender map 216
+    rerender map 217
+    rerender map 218
+    rerender map 219
+    rerender map 221
+
+
+    Add_to_cart.jsx:45
+    --------------------
+    216 is_in_cart=  false
+    216 is_in_cart=  false
+
+    217 is_in_cart=  false
+    217 is_in_cart=  false
+
+    218 is_in_cart=  false
+    218 is_in_cart=  false
+
+    219 is_in_cart=  true
+    219 is_in_cart=  true
+
+    221 is_in_cart=  true
+    221 is_in_cart=  true
+
+---------------------------------------------------------------------------------
+
+

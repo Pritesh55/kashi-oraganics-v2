@@ -4,11 +4,11 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 import React, { useEffect, useState } from 'react'
-import Form_heading from './atoms/Form_heading';
-import Form_field_text from './Form_field_text';
-import Form_field_text_area from './Form_field_text_area';
-import Goto_btn from '../../server/atoms/Goto_btn';
-import Sign_btns from '../../server/atoms/sign_btns';
+import Form_heading from '../../atoms/forms/Form_heading';
+import Form_field_text from '../../atoms/forms/Form_field_text';
+import Form_field_text_area from '../../atoms/forms/Form_field_text_area';
+import Goto_btn from '../../../../server/atoms/Goto_btn';
+import Sign_btns from '../../../../server/atoms/sign_btns';
 
 const Cre_pt_form = ({ revalidateAll }) => {
 
@@ -127,7 +127,7 @@ const Cre_pt_form = ({ revalidateAll }) => {
 
             await axios.post('/api/pt/create-pt', { create_pt_object }).then(function (response) {
                 // -------------------------
-                // console.log(`create Product Response`, response.data);
+                console.log(`create Product Response`, response.data);
 
                 if (response.data.success == true) {
                     // setIsptCreatedMessage('Thank you, You created a New Product...');
@@ -147,10 +147,11 @@ const Cre_pt_form = ({ revalidateAll }) => {
                     router.push('/admin');
                     router.refresh();
 
-                 
+
                     // -----------------------
 
                 } else {
+                    set_new_pt_creating(false);
                     setIsptCreatedMessage('Oh, There is an Error..., Product is not created..');
                     setIsNewProductCreated(true);
 

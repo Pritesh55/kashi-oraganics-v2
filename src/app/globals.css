@@ -2,7 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+.border-color-deep-pink {
+  border-color: deeppink;
+}
+
+.border-color-dark-orange {
+  border-color: darkorange;
+}
+
+.border-color-chocklet {
+  border-color: chocolate;
+}
+
+.shadow-kashi {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.color-white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(337deg) brightness(104%) contrast(103%);
+}
+
+.icon-red {
+  filter: brightness(0) saturate(100%) invert(33%) sepia(95%) saturate(7463%) hue-rotate(360deg) brightness(99%) contrast(110%);
+}
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -21,7 +45,7 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-}
+} */
 
 *::selection {
   background-color: #fde047;
@@ -65,4 +89,43 @@ pre {
   border-radius: 8px;
   /* roundness of the scroll thumb */
   border: 3px solid white;
+}
+
+main {
+
+  /* background: url(https://static.toiimg.com/thumb/msid-53907331,width-748,height-499,resizemode=4,imgsize-170833/Prayag-Ghat-Varanasi.jpg); */
+
+
+
+  background: #e53935;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e35d5b, #e53935);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e35d5b, #e53935);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* --------------------------------------------------------- */
+
+  background: #D1913C;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFD194, #D1913C);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* --------------------------------------------------------- */
+  /* --------------------------------------------------------- */
+
+  background: none;
+  /* fallback for old browsers */
+  background: none;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: none;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* --------------------------------------------------------- */
+
+
+
+
 }

@@ -10,9 +10,9 @@ import supabase from '@/app/components/supabase/sbClient';
 import { revalidateAll } from '@/app/actions';
 // :: to pass as props to revalidate cache..
 // -------------------------------------------
-import Show_all_products from '@/app/components/client/product/show_all_products';
+import Show_all_products from '@/app/components/client/product/org/show_all_products';
 
-const Product = async ({ is_admin = false }) => {
+const Product = async ({ is_admin = false, user_id, cart = [] }) => {
 
     // product :: step 01.01 :: v1 (Variable 01) - isProductsFS is set to false..
     // isProductsFS == is products "from server" (FS) is there ?? No..
@@ -56,9 +56,9 @@ const Product = async ({ is_admin = false }) => {
     // console.log(`is_admin=`, is_admin)
 
     return (
-        <section className="bg-white px-2">
+        <section className="px-3">
 
-            <div className="xl:container px-5 py-5 mx-auto flex flex-col gap-y-10">
+            <div className="xl:container sm:px-5 py-5 mx-auto flex flex-col gap-y-10">
 
                 {/* // product :: step 01.04 :: 
                 :: If there are products from server :: (isProductsFS), 
@@ -70,6 +70,8 @@ const Product = async ({ is_admin = false }) => {
                         productsFS={products}
                         revalidateAll={revalidateAll}
                         is_admin={is_admin}
+                        user_id={user_id}
+                        cart={cart}
                     ></Show_all_products>
                 }
                 {/* // product :: step 01.05.01 :: props :: {revalidateAll}

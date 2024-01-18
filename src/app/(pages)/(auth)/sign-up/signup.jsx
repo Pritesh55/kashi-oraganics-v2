@@ -7,7 +7,7 @@ import Sign_btns from '@/app/components/server/atoms/sign_btns'
 const signup = () => {
     return (
         <>
-            <div className="bg-white text-black min-h-screen">
+            <div className=" text-black min-h-screen">
 
                 {/* step 11.16 :: Ui screen for Sign up Screen :: */}
                 <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
