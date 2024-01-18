@@ -143,7 +143,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <Product is_admin={is_admin} cart={cart} user_id={user_id}></Product>
+        <Product is_admin={false} cart={cart} user_id={user_id}></Product>
       </main>
 
     </>
