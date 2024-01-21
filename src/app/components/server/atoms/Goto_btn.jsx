@@ -9,7 +9,7 @@ const Goto_btn = ({ name = ``, goto, formAction, btn_bg = 'bg-white btn-tp' }) =
         <>
 
             {(goto) && <>
-                <Link href={`${goto}`} className={` ${btn_bg} text-black   border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider capitalize`} >
+                <Link href={`${goto}`} scroll={false} className={` ${btn_bg} text-black   border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider capitalize`} >
                     {name}
                 </Link>
             </>

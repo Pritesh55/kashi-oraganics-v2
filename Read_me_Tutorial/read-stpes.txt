@@ -141,7 +141,7 @@ https://supabase.com/dashboard/project/okfvfltvjlpvzhiqhgyp/auth/users
 # Home page ::
 ----------------
 <div className="text-white absolute top-5 right-5 ">
-<Link href={'/login'}
+<Link href={'/login'} scroll={false}
   // onClick={() => { goToPayment(); }} 
   className="btn-tp bg-transparent text-white border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-sm md:text-lg leading-6 py-2 px-4 md:px-8 font-medium  hidden md:inline-flex ">
   Login

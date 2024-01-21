@@ -16,7 +16,7 @@ const Sign_btns = ({
 
                 {(user_id !== undefined) && <>
 
-                    <Link href={`/profile`}
+                    <Link href={`/profile`} scroll={false}
                         className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                         Profile 
                     </Link>
@@ -25,7 +25,7 @@ const Sign_btns = ({
 
                 {(signup == true) &&
                     <>
-                        <Link href={`/sign-up`}
+                        <Link href={`/sign-up`} scroll={false}
                             className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                             Sign up 
                         </Link>
@@ -36,7 +36,7 @@ const Sign_btns = ({
 
                 {(signin == true) &&
 
-                    <Link href={`/sign-in`}
+                    <Link href={`/sign-in`} scroll={false}
                         className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black`} border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                         {`Sign in`}
                     </Link>

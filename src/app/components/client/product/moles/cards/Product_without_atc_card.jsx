@@ -10,7 +10,7 @@ const Product_without_atc_card = ({ is_admin, curpt }) => {
 
             {
                 (is_admin == true) && <>
-                    <Link href={`/admin/edit_pt/${curpt?.id}/`}
+                    <Link href={`/admin/edit_pt/${curpt?.id}/`} scroll={false}
                         // className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white"
                         className=" absolute top-0 left-0 px-6 py-2 rounded-br-lg rounded-tl-lg text-base font-medium text-black z-50 bg-white hover:bg-yellow-300 
                      border-r-2 border-b-2 border-r-orange-400 border-b-orange-400"
@@ -19,7 +19,7 @@ const Product_without_atc_card = ({ is_admin, curpt }) => {
 
                         {`Edit`}
                     </Link>
-                    <Link href={`/admin/delete_pt/${curpt?.id}/`}
+                    <Link href={`/admin/delete_pt/${curpt?.id}/`} scroll={false}
                         // className="btn-tp absolute top-0 left-0 px-6 py-2 border-r-2 border-b-2 border-r-orange-400 border-b-orange-400 rounded-br-lg rounded-tl-lg text-base font-medium text-purple-800 z-50 bg-white"
                         className="absolute top-0 right-0 z-50 px-3 py-2 border-l-2 border-b-2 border-l-orange-400 border-b-orange-400 rounded-bl-lg rounded-tr-lg bg-white hover:bg-yellow-300"
                     >

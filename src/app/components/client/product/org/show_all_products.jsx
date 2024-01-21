@@ -375,20 +375,20 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false, user_i
                     <div className="text-black rounded-lg lg:flex justify-center flex-wrap gap-x-6 hidden">
 
                         {/* <div className=""> */}
-                        <Link href={'/'} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl '> {`${total_item} items`} </Link>
-                        <Link href={'/'} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl'> {`${total_amount} ₹`} </Link>
+                        <Link href={'/'} scroll={false} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl '> {`${total_item} items`} </Link>
+                        <Link href={'/'} scroll={false} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl'> {`${total_amount} ₹`} </Link>
 
                         {/* </div> */}
 
                     </div>
 
-                    <Link href={'/'} className='bg-yellow-300 px-4 md:px-12 py-2 rounded-lg  text-lg md:text-xl'> Go to cart </Link>
+                    <Link href={'/'} scroll={false} className='bg-yellow-300 px-4 md:px-12 py-2 rounded-lg  text-lg md:text-xl'> Go to cart </Link>
                 </div>
 
                 <div className="flex justify-between flex-wrap gap-x-3 md:gap-x-6 gap-y-3 rounded-lg items-start lg:hidden">
                     {/* <div className=""> */}
-                    <Link href={'/'} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_item} items`} </Link>
-                    <Link href={'/'} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_amount} ₹`} </Link>
+                    <Link href={'/'} scroll={false} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_item} items`} </Link>
+                    <Link href={'/'} scroll={false} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_amount} ₹`} </Link>
 
                     {/* </div> */}
                 </div>
@@ -447,7 +447,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false, user_i
                     <div className="text-transparent w-full max-w-full break-all -z-50"> {`------------------- `}</div>
                 </div>
 
-                <Link href="/profile" className="bg-yellow-300 rounded-full px-5 py-5  flex justify-center items-center fixed bottom-3 right-1 z-[9999]">
+                <Link href="/cart" scroll={false} className="bg-yellow-300 rounded-full px-5 py-5  flex justify-center items-center fixed bottom-3 right-1 z-[9999]">
                     <Image src='/cart-icon.svg' alt='Go to cart' width={24} height={24} className=''></Image>
                 </Link>
 

@@ -106,7 +106,7 @@ const LoginBtn = ({ isBgDark = true, signup = false, signin = false, revalidateA
 
                 {(user_id !== null) && <>
 
-                    <Link href={`/profile`}
+                    <Link href={`/profile`} scroll={false}
                         className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                         Profile 4
                     </Link>
@@ -116,7 +116,7 @@ const LoginBtn = ({ isBgDark = true, signup = false, signin = false, revalidateA
 
                 {(user_id == null && signup == false) &&
                     <>
-                        <Link href={`/sign-up`}
+                        <Link href={`/sign-up`} scroll={false}
                             className={` ${(isBgDark) ? `bg-black text-white hover:border-[#ffd700] hover:text-[#ffd700]` : `btn-tp bg-white text-black `}  border-2 border-solid border-orange-400 rounded-lg focus:outline-none justify-center items-center gap-2 text-base leading-5 py-2 px-4 font-medium tracking-wider`}>
                             Sign up 4 
                         </Link>
