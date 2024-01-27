@@ -6,6 +6,7 @@ import Goto_btn from '@/app/components/server/atoms/Goto_btn'
 import Sign_btns from '@/app/components/server/atoms/sign_btns'
 // ----------------------------------
 import Product from './(pages)/pt/page';
+import Home_btn from './components/server/atoms/Home_btn';
 
 
 export default async function Home() {
@@ -58,16 +59,16 @@ export default async function Home() {
   var user_id;
   var user_profile;
 
-  if (user) {
 
-    user_id = user.id;
 
-    // check profiles table:: find user?.id :: then return rows Which matches user.id ::
-    var { data: profilesData, error: profilesError } = await supabase
-      .from('profiles')
-      .select("*")
-      .eq('user_id', user_id);
-  }
+  user_id = user?.id;
+
+  // check profiles table:: find user?.id :: then return rows Which matches user.id ::
+  var { data: profilesData, error: profilesError } = await supabase
+    .from('profiles')
+    .select("*")
+    .eq('user_id', user_id);
+
 
   // profilesData= [
   //   {
@@ -114,6 +115,7 @@ export default async function Home() {
   // console.log(`profilesData=`, profilesData);
   // console.log(`user_profile=`, user_profile);
   // console.log(`is_admin = `, is_admin);
+  // console.log(`cart home page = `, cart);
 
   return (
     <>
@@ -122,14 +124,7 @@ export default async function Home() {
 
         <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
-          <div className="text-black rounded-lg flex flex-wrap">
-
-            {(is_admin == true) && <>
-              <Goto_btn goto='/admin' name='admin'></Goto_btn>
-            </>
-            }
-          </div>
-
+          <Home_btn is_admin={is_admin} isHome={true}></Home_btn>
 
           <div className="text-black rounded-lg">
             {(user) ? <>

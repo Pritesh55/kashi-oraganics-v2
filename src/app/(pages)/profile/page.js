@@ -10,6 +10,7 @@ import Goto_btn from '@/app/components/server/atoms/Goto_btn'
 import Profile_form from '@/app/components/client/product/moles/forms/Profile_form'
 import Sign_btns from '@/app/components/server/atoms/sign_btns'
 import Link from 'next/link'
+import Home_btn from '@/app/components/server/atoms/Home_btn'
 
 const Profile_page = async () => {
   // -------------------------------------------------------------------
@@ -125,16 +126,7 @@ const Profile_page = async () => {
     <main className="bg-white min-h-screen">
       <div className="px-5 py-3 flex justify-between items-center gap-3 flex-wrap">
 
-        <div className="text-black rounded-lg flex flex-wrap gap-x-6 ">
-
-          <Goto_btn goto='/' name='Home'></Goto_btn>
-
-          {(is_admin == true) && <>
-            <Goto_btn goto='/admin' name='admin'></Goto_btn>
-          </>
-          }
-        </div>
-
+        <Home_btn is_admin={is_admin}></Home_btn>
 
         <div className="text-black rounded-lg">
           {(user) ? <>

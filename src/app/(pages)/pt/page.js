@@ -56,9 +56,9 @@ const Product = async ({ is_admin = false, user_id, cart = [] }) => {
     // console.log(`is_admin=`, is_admin)
 
     return (
-        <section className="px-3">
+        <section className="px-5">
 
-            <div className="xl:container sm:px-5 py-5 mx-auto flex flex-col gap-y-10">
+            <div className="xl:container py-3 mx-auto flex flex-col gap-y-5 md:gap-y-10">
 
                 {/* // product :: step 01.04 :: 
                 :: If there are products from server :: (isProductsFS), 

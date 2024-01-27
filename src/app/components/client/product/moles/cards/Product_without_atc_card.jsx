@@ -57,15 +57,15 @@ const Product_without_atc_card = ({ is_admin, curpt }) => {
 
             {/* <hr className="border-b-2 border-solid border-orange-400 my-6" /> */}
 
-            <div className="flex flex-col gap-y-4 items-start leading-normal text-black capitalize px-6 py-6 bg-white rounded-lg">
+            <div className="flex flex-col gap-y-4 items-start leading-normal text-black capitalize px-3 md:px-6 py-3 md:py-6 bg-white rounded-lg">
 
                 {(curpt?.pt_category || curpt?.pt_brand) &&
                     <>
-                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-5">
+                        <div className="flex justify-between items-center w-full flex-wrap gap-x-6 gap-y-3">
 
                             {(curpt?.pt_category) &&
                                 <>
-                                    <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all"
+                                    <h3 className="text-sm md:text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all"
                                     >
                                         {curpt?.pt_category}
                                     </h3>
@@ -73,7 +73,7 @@ const Product_without_atc_card = ({ is_admin, curpt }) => {
                             }
                             {(curpt?.pt_brand) &&
                                 <>
-                                    <h3 className="text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all">
+                                    <h3 className="text-sm md:text-base px-2 py-1 border-2 border-solid border-orange-400 rounded-md btn-tp break-all">
                                         {curpt?.pt_brand}
                                     </h3>
                                 </>

@@ -16,6 +16,7 @@ import { wait } from '@/functions/urlFunctions';
 import useScrollPosition from './useScrollPosition';
 import Product_without_atc_card from '../moles/cards/Product_without_atc_card';
 import Goto_btn from '@/app/components/server/atoms/Goto_btn';
+import Cart_header from '@/app/(pages)/cart/Cart_header';
 
 const Show_all_products = ({ revalidateAll, productsFS, is_admin = false, user_id, cart = [] }) => {
 
@@ -367,32 +368,7 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false, user_i
 
 
 
-            <div className="flex flex-col gap-y-3">
-                <div className="flex justify-between flex-wrap gap-3">
-
-                    <button onClick={() => { empty_cart(); }} className="bg-gray-50 px-4 md:px-12 py-2 rounded-lg  text-lg md:text-xl border-2 border-gray-300">Empty cart</button>
-
-                    <div className="text-black rounded-lg lg:flex justify-center flex-wrap gap-x-6 hidden">
-
-                        {/* <div className=""> */}
-                        <Link href={'/'} scroll={false} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl '> {`${total_item} items`} </Link>
-                        <Link href={'/'} scroll={false} className='bg-yellow-300 px-12 py-2 rounded-lg text-lg md:text-xl'> {`${total_amount} ₹`} </Link>
-
-                        {/* </div> */}
-
-                    </div>
-
-                    <Link href={'/'} scroll={false} className='bg-yellow-300 px-4 md:px-12 py-2 rounded-lg  text-lg md:text-xl'> Go to cart </Link>
-                </div>
-
-                <div className="flex justify-between flex-wrap gap-x-3 md:gap-x-6 gap-y-3 rounded-lg items-start lg:hidden">
-                    {/* <div className=""> */}
-                    <Link href={'/'} scroll={false} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_item} items`} </Link>
-                    <Link href={'/'} scroll={false} className='bg-yellow-300  px-6 md:px-12 py-2 rounded-lg  text-lg md:text-xl break-all'> {`${total_amount} ₹`} </Link>
-
-                    {/* </div> */}
-                </div>
-            </div>
+            <Cart_header user_id={user_id} cart={cart} revalidateAll={revalidateAll}></Cart_header>
 
 
             <div className="flex flex-wrap gap-x-4 gap-y-6 justify-evenly items-start">
@@ -447,8 +423,8 @@ const Show_all_products = ({ revalidateAll, productsFS, is_admin = false, user_i
                     <div className="text-transparent w-full max-w-full break-all -z-50"> {`------------------- `}</div>
                 </div>
 
-                <Link href="/cart" scroll={false} className="bg-yellow-300 rounded-full px-5 py-5  flex justify-center items-center fixed bottom-3 right-1 z-[9999]">
-                    <Image src='/cart-icon.svg' alt='Go to cart' width={24} height={24} className=''></Image>
+                <Link href="/cart" className="bg-yellow-300 rounded-full px-3 py-3 md:px-5 md:py-5  flex justify-center items-center fixed bottom-3 right-1 z-[9999]">
+                    <Image src='/cart-icon.svg' alt='Go to cart' width={24} height={24} className='w-5 h-5'></Image>
                 </Link>
 
                 <div className="absolute bottom-0 -z-50">
