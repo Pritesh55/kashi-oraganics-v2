@@ -26,14 +26,7 @@ const Empty_cart_btn = ({ user_id ,cart}) => {
                 </div>
             }
 
-
-
         </>
-
-
-
-
-
     )
 }
 
